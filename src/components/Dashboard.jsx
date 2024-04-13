@@ -6,7 +6,7 @@ import user from "../Assets/user_profile.png";
 import search from "../Assets/search.png";
 import InternshipLoader from './InternshipLoader';
 import '../Styles/InternshipLoader.css';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import dummy from '../Assets/dummy.jpg';
 import toast, { Toaster } from 'react-hot-toast';
 import { placedStudentDetails } from "../data/placedstudentData";
@@ -184,7 +184,7 @@ function Dashboard({ data }) {
                 <button className="admin_profile" onClick={() => { navigate('/admin') }}>
                   <p className="admin_div">
                     <span className="admin_email text-sm text-[#f8b217] font-bold">{username.slice(0, username.indexOf('@'))}</span>
-                    <a href="/admin" className="admin_role">Go to Dashboard</a>
+                    <Link to={"/admin"} className="admin_role">Go to Dashboard</Link>
                   </p>
                   <img src={user} className="admin_img" alt="admin_img"/>
                 </button>

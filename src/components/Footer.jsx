@@ -7,6 +7,7 @@ import youtube from '../Assets/youtube.png';
 import facebook from '../Assets/facebook.png';
 import twitter from '../Assets/twitter.png';
 import instagram from '../Assets/instagram.png';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 
@@ -47,10 +48,18 @@ const Footer = () => {
                     <div className="footer_right_text" data-aos="zoom-in" data-aos-duration="600">
                         <p className="footer_app_name" >Placement Portal</p>
                         <div className="social_links">
-                            <a href="https://www.youtube.com/channel/UCl7EyZv0Rb3QKxgTjDQ3e-Q" target='_blank' className="footer_link"><img src={youtube} className='footer_social_icon' alt="social_media_logo"/></a>
-                            <a href="https://www.facebook.com/dypcoeakurdipune" target='_blank' className="footer_link"><img src={facebook} className='footer_social_icon' alt="social_media_logo"/></a>
-                            <a href="https://www.instagram.com/dypcollegeofengineering/" target='_blank' className="footer_link"><img src={instagram} className='footer_social_icon' alt="social_media_logo"/></a>
-                            <a href="https://twitter.com/DYPCOE_AKURDI" target='_blank' className="footer_link1"><img src={twitter} className='footer_social_icon1' alt="social_media_logo"/></a>
+                            <Link to={"https://www.youtube.com/channel/"} target='_blank' className="footer_link">
+                                <img src={youtube} className='footer_social_icon' alt="social_media_logo"/>
+                            </Link>
+                            <Link to={"https://www.facebook.com/"} target='_blank' className="footer_link">
+                                <img src={facebook} className='footer_social_icon' alt="social_media_logo"/>
+                            </Link>
+                            <Link to={"https://www.instagram.com/"} target='_blank' className="footer_link">
+                                <img src={instagram} className='footer_social_icon' alt="social_media_logo"/>
+                            </Link>
+                            <Link to={"https://twitter.com/"} target='_blank' className="footer_link1">
+                                <img src={twitter} className='footer_social_icon1' alt="social_media_logo"/>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import {auth,database} from '../firebaseConfig'; 
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const ForgotPassword = () => {
     const navigate = useNavigate();
@@ -63,7 +63,7 @@ const ForgotPassword = () => {
                     <p class="mt-3 flex items-center justify-center divide-x divide-gray-300 text-center">
                         <span class="inline pr-3 text-sm text-white">
                             Remember your password?
-                            <a class="font-medium text-blue-600 decoration-2 hover:underline" href="/login"> Sign in </a>
+                            <Link To={"/login"} class="font-medium text-blue-600 decoration-2 hover:underline" > Sign in </Link>
                         </span>
                     </p>
                 </div>

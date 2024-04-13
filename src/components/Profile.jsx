@@ -7,7 +7,7 @@ import github from "../Assets/github.png";
 import gmail from "../Assets/gmail1.png";
 import achievement from "../Assets/achievement.png";
 import certificate from "../Assets/certificate.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Styles/InternshipLoader.css";
 import arrow from '../Assets/arrow1.png';
 import { useParams } from "react-router-dom";
@@ -189,38 +189,38 @@ const Profile = ({ data }) => {
                 </ul>
               </div>
               <div className="social_links_div">
-                <a
-                  href={Linkedin.length > 5 ? Linkedin : "/students"}
+                <Link
+                  to={Linkedin.length > 5 ? Linkedin : "/students"}
                   rel="noreferrer"
                   target="_blank"
                   className="social_link"
                 >
                   <img src={linkedin} alt="" className="social_icon" />
-                </a>
-                <a
-                  href={Leetcode.length > 5 ? Leetcode : "/students"}
+                </Link>
+                <Link
+                  to={Leetcode.length > 5 ? Leetcode : "/students"}
                   rel="noreferrer"
                   target="_blank"
                   className="social_link"
                 >
                   <img src={leetcode} alt="" className="social_icon" />
-                </a>
-                <a
-                  href={Github.length > 5 ? Github : "/students"}
+                </Link>
+                <Link
+                  to={Github.length > 5 ? Github : "/students"}
                   rel="noreferrer"
                   target="_blank"
                   className="social_link"
                 >
                   <img src={github} alt="" className="social_icon" />
-                </a>
-                <a
-                  href="https://mail.google.com/"
+                </Link>
+                <Link
+                  to="https://mail.google.com/"
                   rel="noreferrer"
                   target="_blank"
                   className="social_link"
                 >
                   <img src={gmail} alt="" className="social_icon" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

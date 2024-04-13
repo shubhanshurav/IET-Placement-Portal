@@ -159,7 +159,7 @@ const BarGraph = () => {
     return (
         <>
         <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
-            <div className='graph_row'>
+            <div className='flex flex-row items-center w-[100%] justify-evenly my-5'>
 
                 <div className='chart_container' data-aos="zoom-in" data-aos-duration="600">
                     <ResponsiveContainer>
@@ -205,7 +205,7 @@ const BarGraph = () => {
 
                 </div>
             </div>
-            <div className='graph_row'>
+            <div className='flex flex-row items-center w-[100%] justify-evenly mb-5'>
 
                 <div className='chart_container' data-aos="zoom-in" data-aos-duration="600">
                     <ResponsiveContainer>

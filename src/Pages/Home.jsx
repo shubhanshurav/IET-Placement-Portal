@@ -55,20 +55,20 @@ const Home = () => {
     <>
     {<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5164424016159245"
      crossorigin="anonymous"></script>}
-      <div className="home_container bg-[#000000]">
+      <div className="w-screen h-full flex justify-center items-center flex-col pb-20 bg-[#000000] ">
         <Navbar />
-        <div className="container_home_center">
+        <div className="flex justify-evenly w-[92%] h-full flex-col items-center">
 
           {/* <h2 className='placement_name'>Placement Portal</h2> */}
           {/* <Slider/> */}
 
-          <div className="home_text_div">
-            <h1><a href='https://dbrau.ac.in' target='_blank' className='college_name text-[crimson]'  >Institute of Engineering and Technology, Khandari Campus, Agra</a></h1>
-            <h4 className='dept_name'>Department of Information Technology</h4>
+          <div className="flex flex-col items-center justify-evenly py-5">
+            <h1 className='text-[35px] font-[700] text-[crimson]'>Institute of Engineering and Technology, Khandari Campus, Agra</h1>
+            <h4 className='dept_name'>Department of Computer Science</h4>
           </div>
 
-          <div className='college_img_div'>
-            <img src={college_img} className='college_div_img' alt="collegeIMG"/>
+          <div className='w-[100%] h-[100%] rounded-[15px]'>
+            <img src={college_img} className='w-[100%] h-full rounded-[10px]' alt="collegeIMG"/>
           </div>
 
           {/* <button className='nav_btn_home' onClick={handleRedirectDashboard}  >Explore <img className='rocket' src={rocket} /> </button> */}
@@ -115,10 +115,10 @@ const Home = () => {
           </Marquee>
         </div>
       </div>
-      <div className='placement_text'>
-        <h1 className='h1_text' data-aos="slide-up" data-aos-duration="600">Placement Statistics</h1>
+      <div className='placement_text bg-gray-900 w-full h-[100px]'>
+        <h1 className='h1_text text-[#4a71fc] text-[30px] font-[800] pl-[20px] ml-[6%] flex w-[100%] ' data-aos="slide-up" data-aos-duration="600">Placement Statistics</h1>
       </div>
-      <div className='graph_container'>
+      <div className='w-full h-fit flex flex-col bg-slate-900 items-center justify-evenly'>
         <BarGraph />
       </div>
       <Footer />

@@ -5,7 +5,7 @@ import { get, set, ref } from 'firebase/database';
 import { useState, useEffect } from 'react';
 import { auth, database } from '../firebaseConfig';
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Admin = () => {
     const navigate = useNavigate();
@@ -282,7 +282,7 @@ const Admin = () => {
                     <p className='text text-white font-bold text-lg pl-5'>Admin Dashboard</p>
                     <div >
 
-                        <a href="/dashboard" class="font-bold pr-4 text-white dark:text-white-500 hover:underline">Go back to Home</a>
+                        <Link to={"/dashboard"} class="font-bold pr-4 text-white dark:text-white-500 hover:underline">Go back to Home</Link>
                         <button type="button" class="text-white bg-blue-700 pr-5 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-bold rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={(e) => { handleLogout() }}>Sign Out</button>
                     </div>
                 </nav>
@@ -292,26 +292,26 @@ const Admin = () => {
                     <div className='statistics_div'>
                         <h2 className='font-bold text-center text-2xl p-3 text-[#f8b217]'>Highest Packages </h2>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-5} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
                             <input type="text" onChange={handelChange2} value={curr_package.value1} name='value1' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
                             <input type="text" onChange={handelChange2} value={curr_package.value2} name='value2' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
                             <input type="text" onChange={handelChange2} value={curr_package.value3} name='value3' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
                             <input type="text" onChange={handelChange2} value={curr_package.value4} name='value4' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()} :</p>
                             <input type="text" onChange={handelChange2} value={curr_package.value5} name='value5' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
@@ -324,26 +324,26 @@ const Admin = () => {
                     <div className='statistics_div'>
                         <h2 className='font-bold text-center text-2xl p-3 text-[#f8b217]'>Placement Percentages </h2>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-5} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
                             <input type="text" onChange={handelChange3} value={curr_percentage.value1} name='value1' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
                             <input type="text" onChange={handelChange3} value={curr_percentage.value2} name='value2' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
                             <input type="text" onChange={handelChange3} value={curr_percentage.value3} name='value3' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
                             <input type="text" onChange={handelChange3} value={curr_percentage.value4} name='value4' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()} :</p>
                             <input type="text" onChange={handelChange3} value={curr_percentage.value5} name='value5' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
@@ -356,26 +356,26 @@ const Admin = () => {
                     <div className='statistics_div'>
                         <h2 className='font-bold text-center text-2xl p-3 text-[#f8b217]'>No. of Companies Visited </h2>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-5} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
                             <input type="text" onChange={handelChange4} value={curr_companies.value1} name='value1' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
                             <input type="text" onChange={handelChange4} value={curr_companies.value2} name='value2' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
                             <input type="text" onChange={handelChange4} value={curr_companies.value3} name='value3' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
                             <input type="text" onChange={handelChange4} value={curr_companies.value4} name='value4' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()} :</p>
                             <input type="text" onChange={handelChange4} value={curr_companies.value5} name='value5' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
@@ -387,26 +387,26 @@ const Admin = () => {
                     <div className='statistics_div'>
                         <h2 className='font-bold text-center text-2xl p-3 text-[#f8b217]'>Median Salary </h2>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-5} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
                             <input type="text" onChange={handelChange5} value={curr_median.value1} name='value1' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-4} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
                             <input type="text" onChange={handelChange5} value={curr_median.value2} name='value2' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-3} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
                             <input type="text" onChange={handelChange5} value={curr_median.value3} name='value3' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-2} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
                             <input type="text" onChange={handelChange5} value={curr_median.value4} name='value4' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
                         <div className='p-2 ps-3 pe-3 flex justify-content-between align-items-center'>
-                            <p className='text text-white text-xl'>Year {date.getFullYear()-1} :</p>
+                            <p className='text text-white text-xl'>Year {date.getFullYear()} :</p>
                             <input type="text" onChange={handelChange5} value={curr_median.value5} name='value5' class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
 
