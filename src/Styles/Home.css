@@ -120,14 +120,12 @@ h1:hover {
 .recruiters_text {
   width: 100%;
   margin-left: 6%;
-  font-size: 30px;
   text-transform: uppercase;
   color: #4a71fc;
   background-image: linear-gradient(#f8b117, #f8b117);
   background-size: 10px 100%;
   background-repeat: no-repeat;
   background-position: 0% 0%;
-  padding-left: 20px; 
   font-weight: 800;
 }
 
@@ -152,11 +150,9 @@ h1:hover {
   background-color: transparent;
 }
 .chart_container {
-  width: 35%;
   border-radius: 10px;
   height: fit-content;
   background-color: #f8fafc;
-  padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 .chart_title {

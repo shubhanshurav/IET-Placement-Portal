@@ -62,13 +62,13 @@ const Home = () => {
           {/* <h2 className='placement_name'>Placement Portal</h2> */}
           {/* <Slider/> */}
 
-          <div className="flex flex-col items-center justify-evenly py-5">
-            <h1 className='text-[35px] font-[700] text-[crimson]'>Institute of Engineering and Technology, Khandari Campus, Agra</h1>
-            <h4 className='dept_name'>Department of Computer Science</h4>
+          <div className="flex flex-col items-center justify-evenly py-4 md:py-5">
+            <h1 className='text-[22px] md:text-[35px] font-[800] md:font-[700] text-[crimson] text-center'>Institute of Engineering and Technology, Agra</h1>
+            <h4 className='dept_name text-[1.1rem] md:text-[2.1rem] text-[#bcbaae] pt-3 text-center font-[700]'>Department of Computer Science</h4>
           </div>
 
-          <div className='w-[100%] h-[100%] rounded-[15px]'>
-            <img src={college_img} className='w-[100%] h-full rounded-[10px]' alt="collegeIMG"/>
+          <div className='w-[90%] m-auto h-full rounded-[15px] pt-3'>
+            <img src={college_img} className='w-[100%] h-[38vh] md:h-full rounded-[10px]' alt="collegeIMG"/>
           </div>
 
           {/* <button className='nav_btn_home' onClick={handleRedirectDashboard}  >Explore <img className='rocket' src={rocket} /> </button> */}
@@ -76,7 +76,7 @@ const Home = () => {
       </div>
       <div className='home_container_center1'>
         <div className="home_center1">
-          <h2 className='recruiters_text' data-aos="slide-up" data-aos-duration="600"> Our Major Recruiters</h2>
+          <h2 className='recruiters_text pl-[20px] text-[22px] md:text-[30px]' data-aos="slide-up" data-aos-duration="600"> Our Major Recruiters</h2>
           <Marquee gradient gradientColor='#f3f4f5' gradientWidth={100} className='marquee' pauseOnHover>
             <div className='image_wrapper'><img src={logo1} className='slider_img' alt="logo"/></div>
             <img src={logo_dots} className='slider_img1' alt="logo"/>
@@ -116,7 +116,7 @@ const Home = () => {
         </div>
       </div>
       <div className='placement_text bg-gray-900 w-full h-[100px]'>
-        <h1 className='h1_text text-[#4a71fc] text-[30px] font-[800] pl-[20px] ml-[6%] flex w-[100%] ' data-aos="slide-up" data-aos-duration="600">Placement Statistics</h1>
+        <h1 className='h1_text text-[#4a71fc] text-[22px] md:text-[30px] font-[800] pl-[16px] md:pl-[20px] ml-[6%] flex w-[100%] ' data-aos="slide-up" data-aos-duration="600">Placement Statistics</h1>
       </div>
       <div className='w-full h-fit flex flex-col bg-slate-900 items-center justify-evenly'>
         <BarGraph />

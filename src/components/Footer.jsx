@@ -33,20 +33,22 @@ const Footer = () => {
         anchorPlacement: 'top-bottom',
     
       });
+
       
+
     return (
-        <div className="footer_div">
-            <div className="footer_div_center">
-                <div className="footer_left">
+        <div className="bg-[#f3f4f5] w-[100%] py-6 flex justify-center items-center">
+            <div className="w-[85%] flex justify-center flex-col md:flex-row items-center gap-4 pb-28 md:pb-0">
+                <div className="footer_left gap-2">
                     <img src={logo} className='footer_logo' alt="footer_logo" data-aos="zoom-in" data-aos-duration="600"/>
                     <div className="footer_left_text" data-aos="zoom-in" data-aos-duration="600">
-                        <p className='college_name_footer'>Institute of Engineering and Technology, Khandari Campus, Agra</p>
-                        <p className="college_text_footer">Accredited by NAAC with 'B++' Grade</p>
+                        <p className='text-[15px] md:text-[20px] text-[#000] font-[700] m-0 w-[95%]'>Institute of Engineering and Technology, Agra</p>
+                        <p className="college_text_footer text-[15px] md:text-[18px]">Accredited by NAAC with 'B++' Grade</p>
                     </div>
                 </div>
-                <div className="footer_right">
+                <div className="footer_right flex md:content-end content-start">
                     <div className="footer_right_text" data-aos="zoom-in" data-aos-duration="600">
-                        <p className="footer_app_name" >Placement Portal</p>
+                        <p className="text-[17px] md:text-[22px] font-[700] text-[#000] m-0" >Placement Portal</p>
                         <div className="social_links">
                             <Link to={"https://www.youtube.com/channel/"} target='_blank' className="footer_link">
                                 <img src={youtube} className='footer_social_icon' alt="social_media_logo"/>
