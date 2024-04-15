@@ -13,6 +13,11 @@ const Company = () => {
   
   const [q, setQ] = useState("");
   const [searchParam] = useState(["name"]);
+  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisibility(!isSidebarVisible);
+  };
 
   function searchItem(items) {
     return items.filter((item) => {
@@ -38,9 +43,14 @@ const Company = () => {
   }
   return (
     <div className="student_div">
-      <Sidebar param={"companies"} />
+      {isSidebarVisible && <Sidebar param={"companies"} />}
       <div className="student_div_center">
         <div className="dashboard_top student_searchbar">
+          {/* Toggle Button */}
+          <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+           onClick={toggleSidebar}>
+              {isSidebarVisible ? "✖️":"♒"}
+          </button>
           <div className="search_bar_div">
             <input
               className="search_bar"

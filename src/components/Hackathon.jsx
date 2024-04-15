@@ -11,6 +11,12 @@ const Hackathon = ({hackathonsData,loading}) => {
   const [q, setQ] = useState("");
   const [searchParam] = useState(["title", "description", "deadline"]);
 
+  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisibility(!isSidebarVisible);
+  };
+
   // console.log("Mil Gya bro data", hackathonsData);
 
   function searchItem(items) {
@@ -27,9 +33,14 @@ const Hackathon = ({hackathonsData,loading}) => {
 
   return (
     <div className='student_div'>
-      <Sidebar param={'hackathons'} />
+      {isSidebarVisible && <Sidebar param={'hackathons'} />}
       <div className="student_div_center">
         <div className="dashboard_top student_searchbar">
+          {/* Toggle Button */}
+          <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+           onClick={toggleSidebar}>
+              {isSidebarVisible ? "✖️":"♒"}
+          </button>
           <div className="search_bar_div">
             <input className='search_bar' type='text' value={q}
               onChange={(e) => {

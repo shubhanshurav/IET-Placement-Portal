@@ -159,7 +159,7 @@ const BarGraph = () => {
     return (
         <>
         <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
-            <div className='flex md:flex-row flex-col items-center gap-5 w-[100%] justify-evenly my-5 px-3'>
+            <div className='grid grid-cols-4 md:grid-cols-2 items-center gap-5 w-[100%] justify-evenly my-5 px-3'>
 
                 <div className='chart_container p-[20px] w-[90%] md:w-[100%]' data-aos="zoom-in" data-aos-duration="600">
                     <ResponsiveContainer>

@@ -36,6 +36,12 @@ function Dashboard({ data }) {
   const [maxpackages, setPackages] = useState(null);
   const [placedData, setPlacedData] = useState(placedStudentDetails);
 
+  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisibility(!isSidebarVisible);
+  };
+
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -166,8 +172,10 @@ function Dashboard({ data }) {
   return (
     <div className="student_div">
       <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
-      <Sidebar param={"dashboard"} />
-      <div className="student_div_center">
+
+      {isSidebarVisible && <Sidebar param={"dashboard"} />}
+
+      <div className="student_div_center w-[94%] md:w-[80%]">
         {/* <div className="dashboard_top">
           <div className="search_bar_div">
             <input className='search_bar' type='text' placeholder='Seach Companies, Internships, Hackathons, or Students...' />
@@ -176,10 +184,16 @@ function Dashboard({ data }) {
             </div>
           </div>
         </div> */}
+
         {data.length > 0 ?
-          <div className="dashboard_bottom_dashboard">
+          <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
+              {/* Toggle Button */}
+            <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+            onClick={toggleSidebar}>
+                {isSidebarVisible ? "✖️":"♒"}
+            </button>
             <div className="dashboard_heading">
-              <h2 className="dashboard_headingtext">Welcome To Dashboard <span className="text font-normal text-3xl">(2023)</span></h2>
+              <h2 className="dashboard_headingtext text-[1.7rem]  md:text-[2rem]">Welcome To Dashboard <span className="text font-normal text-2xl md:text-3xl">(2023)</span></h2>
               {authUser ?
                 <button className="admin_profile" onClick={() => { navigate('/admin') }}>
                   <p className="admin_div">
@@ -191,30 +205,30 @@ function Dashboard({ data }) {
                 : <button className="w-fit flex justify-content-center items-center text-lg font-bold bg-[#373737] p-1 rounded-full ps-2 pe-2 hover:bg-[#4a71fc]" onClick={() => { navigate('/login') }}><img src={user} className="admin_img" />Login</button>}
               {/* <button className="admin"><img src={user} className="user_img"/> Login</button> */}
             </div>
-            <div className="flex_container1">
-              <div className="flex_item1">
-                <div className="flex_item1-1">
+            <div className="flex_container1 flex flex-wrap">
+              <div className="flex_item1 flex flex-col gap-3 md:gap-0 w-full md:w-[58%] h-fit md:h-[100%]">
+                <div className="flex_item1-1 gap-2 flex w-full md:w-[48%] h-fit md:h-[100%] md:gap-0">
                   <div className="flex_item">
                     <h3 className="dashboard_text">Total Students</h3>
-                    <h2 id="total_student">{stats.totalStudents}</h2>
+                    <h2 id="total_student" className="text-[1.5rem] md:text-[2rem]">{stats.totalStudents}</h2>
                   </div>
                   <div className="flex_item">
                     <h3 className="dashboard_text">Placed Students</h3>
-                    <h2 id="placed_student">{stats.placedStudents}</h2>
+                    <h2 id="placed_student" className="text-[1.5rem] md:text-[2rem]">{stats.placedStudents}</h2>
                   </div>
                 </div>
-                <div className="flex_item1-2">
+                <div className="flex_item1-2 gap-2 flex w-full md:w-[48%] h-fit md:h-[100%] md:gap-0">
                   <div className="flex_item">
                     <h3 className="dashboard_text">Total Companies</h3>
-                    <h2 id="total_company">{stats.totalCompanies}</h2>
+                    <h2 id="total_company" className="text-[1.5rem] md:text-[2rem]">{stats.totalCompanies}</h2>
                   </div>
                   <div className="flex_item">
                     <h3 className="dashboard_text">Average Package</h3>
-                    <h2 id="avg_salary">{stats.averagePackage} LPA</h2>
+                    <h2 id="avg_salary" className="text-[1.5rem] md:text-[2rem]">{stats.averagePackage} LPA</h2>
                   </div>
                 </div>
               </div>
-              <div className="flex_item2 ">
+              <div className="flex_item2 flex flex-col gap-3 md:gap-0 w-full md:w-[40%] h-fit md:h-[100%] mt-[12px] md:mt-0">
                 <h3 className="dashboard_text">Job Profiles</h3>
                 {/* {
                   data.slice(0, 3).map((item, index) => {
@@ -255,8 +269,8 @@ function Dashboard({ data }) {
                 </div>
               </div>
             </div>
-            <div className="flex_container2">
-              <div className="flex_item3">
+            <div className="flex_container2 flex flex-wrap gap-4 md:gap-0">
+              <div className="flex_item3 w-full md:w-[51%] h-fit md:h-[100%] ">
                 <h3 className="dashboard_text">Top 5 Packages</h3>
                 <div className="packages_div">
                   {
@@ -284,7 +298,7 @@ function Dashboard({ data }) {
                   }
                 </div>
               </div>
-              <div className="flex_item4" >
+              <div className="flex_item4 w-full md:w-[47%] h-fit md:h-[100%] " >
                 <h5 className="dashboard_text">Max Packages (LPA)</h5>
                 <BarChart
                   width={550}

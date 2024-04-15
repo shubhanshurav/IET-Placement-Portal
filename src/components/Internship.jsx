@@ -15,6 +15,13 @@ import sort from '../Assets/filter.png';
 
 const Internship = ({ internshipData }) => {
   const [q, setQ] = useState("");
+
+  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisibility(!isSidebarVisible);
+  };
+
   const [searchParam] = useState(["company", "location", "role"]);
 
   function searchItem(items) {
@@ -59,9 +66,14 @@ const Internship = ({ internshipData }) => {
 
   return (
     <div className="student_div">
-      <Sidebar param={"internships"} />
+      {isSidebarVisible && <Sidebar param={"internships"} />}
       <div className="student_div_center">
         <div className="dashboard_top student_searchbar">
+          {/* Toggle Button */}
+          <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+           onClick={toggleSidebar}>
+              {isSidebarVisible ? "✖️":"♒"}
+          </button>
           <div className="search_bar_div">
             <input
               className="search_bar"

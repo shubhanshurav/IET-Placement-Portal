@@ -33,6 +33,12 @@ const Student = ({ data }) => {
   const [check_flag, setCheckFlag] = useState(0);
   const [showDiv, setShowDiv] = useState(false);
 
+  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisibility(!isSidebarVisible);
+  };
+
   const SortbyName = () => {
     data.sort((a, b) => {
       if (a.Name < b.Name) {
@@ -100,9 +106,14 @@ const Student = ({ data }) => {
 
   return (
     <div className='student_div'>
-      <Sidebar param={'students'} />
+      {isSidebarVisible && <Sidebar param={'students'} />}
       <div className="student_div_center">
         <div className="dashboard_top student_searchbar">
+              {/* Toggle Button */}
+            <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+            onClick={toggleSidebar}>
+                {isSidebarVisible ? "✖️":"♒"}
+            </button>          
           <div className="search_bar_div ">
             <input className='search_bar' onChange={(e) => setQ(e.target.value)} value={q} type='text' placeholder='Seach Companies, Students, or Skills ...' />
             <div className="search_icon_div">

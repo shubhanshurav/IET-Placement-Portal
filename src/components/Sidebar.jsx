@@ -12,13 +12,26 @@ import {useNavigate} from 'react-router-dom';
 
 const Sidebar = ({param}) => {
   const navigate = useNavigate();
+  // const [isSidebarVisible, setSidebarVisibility] = useState(false);
+
+  // const toggleSidebar = () => {
+  //   setSidebarVisibility(!isSidebarVisible);
+  // };
+
   return (
-    <div className='sidebar'>
+    <div className='sidebar md:w-[18%] w-[50%]'>
         <div className="sidebar_name">
             <p className='sidebar_college_name'  onClick={()=>{navigate('/dashboard')}}>
               <img src={logo} alt="sidebar_logo" className='' />
               <span>IET, Agra</span>
-            </p>
+              {/* Toggle Button */}
+              {/* <button
+                className=" top-80 left-0 p-[2px] z-50 text-white text-2xl bg-richblack-800 rounded"
+                onClick={toggleSidebar}
+              >
+                {isSidebarVisible ? "➡️":"⬅️"}
+              </button> */}
+            </p> 
         </div>
         <div className="sidebar_menu">
             <ul className='sidebar_ul'>
