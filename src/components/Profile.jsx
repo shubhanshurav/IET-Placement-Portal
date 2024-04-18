@@ -118,7 +118,7 @@ const Profile = ({ data }) => {
     setIsActive("4");
   };
   console.log(InternshipName);
-  return (
+  return ( 
     <>
       {filteredData.length > 0 ? (
         <div className="w-[100%] h-fit md:h-[100vh] md:relative flex flex-col md:flex-row justify-end items-center bg-[#222222] ">
