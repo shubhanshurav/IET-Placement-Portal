@@ -8,12 +8,14 @@ import "../Styles/Company.css";
 import company_logo from '../Assets/company_logo.png';
 import {useNavigate} from 'react-router-dom';
 import { companiesList } from "../data/companyList";
+import { ImMenu, ImCross } from "react-icons/im";
+
 
 const Company = () => {
   
   const [q, setQ] = useState("");
   const [searchParam] = useState(["name"]);
-  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+  const [isSidebarVisible, setSidebarVisibility] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarVisibility(!isSidebarVisible);
@@ -44,13 +46,13 @@ const Company = () => {
   return (
     <div className="student_div">
       {isSidebarVisible && <Sidebar param={"companies"} />}
-      <div className="student_div_center">
-        <div className="dashboard_top student_searchbar">
+      <div className="student_div_center w-[98%]">
           {/* Toggle Button */}
-          <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+          <button className="pt-2 z-10 ml-[7.5rem] text-white text-2xl bg-richblack-800 rounded"
            onClick={toggleSidebar}>
-              {isSidebarVisible ? "✖️":"♒"}
+                {isSidebarVisible ? <ImCross /> : <ImMenu />}
           </button>
+        <div className="dashboard_top student_searchbar">
           <div className="search_bar_div">
             <input
               className="search_bar"
@@ -64,12 +66,12 @@ const Company = () => {
           </div>
         </div>
         <div className="dashboard_bottom">
-          <div className="card-container1">
-          <h1 className="companies_title font-bold text-3xl">List of companies that visit our campus</h1>
-            <div className="cards1">
+          <div className="card-container1 flex flex-wrap">
+          <h1 className="companies_title font-bold text-3xl z-0 py-2 ml-[-15px]">List of companies that visit our campus</h1>
+            <div className="cards1 grid grid-cols-2 md:grid-cols-4 ml-[-15px] px-1"> 
               {searchItem(companiesList).length>0?searchItem(companiesList).map((item, index) => {
                 return (
-                  <div key={index} className="card1" onClick={(e)=>{handleClick(item.name)}}>
+                  <div key={index} className="card1 max-w-[90%]" onClick={(e)=>{handleClick(item.name)}}>
                     <div className="company_logo_div">
                       <img src={item.icon} alt="pic" className="company_logo" />
                     </div>

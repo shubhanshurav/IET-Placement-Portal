@@ -8,7 +8,7 @@ const HackathonCard = ({hackathons}) =>{
   // console.log("hackathons:", hackathons)
 return (
   <>
-  <div className="card card2">
+  <div className="card card2 min-w-[330px] md:min-w-[380px]">
   {/* <Link to={hackathons.link} target="_blank"> */}
     <h6 className="hackathon_title text-xl font-bold">{hackathons.title}</h6>
     <img src={hackathons.img} className="w-[100%]" alt="img" />
