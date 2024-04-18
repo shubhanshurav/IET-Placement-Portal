@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/Profile.css";
-import profile_img from "../Assets/avatar.jpg";
+// import profile_img from "../Assets/avatar.jpg";
 import leetcode from "../Assets/leetcode.png";
 import linkedin from "../Assets/linkedin.png";
 import github from "../Assets/github.png";
 import gmail from "../Assets/gmail1.png";
-import achievement from "../Assets/achievement.png";
-import certificate from "../Assets/certificate.png";
+// import achievement from "../Assets/achievement.png";
+// import certificate from "../Assets/certificate.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../Styles/InternshipLoader.css";
 import arrow from '../Assets/arrow1.png';
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import InternshipLoader from "./InternshipLoader";
 
 const Profile = ({ data }) => {
@@ -121,110 +121,112 @@ const Profile = ({ data }) => {
   return (
     <>
       {filteredData.length > 0 ? (
-        <div className="profile_div">
-          <div className="profile_menu_div">
-            <div className="profile_menu">
+        <div className="w-[100%] h-fit md:h-[100vh] md:relative flex flex-col md:flex-row justify-end items-center bg-[#222222] ">
+          <div className="profile_menu_div w-full md:w-[20%] h-fit md:h-[100vh] bg-[#2d2d2d] md:absolute md:left-0 md:top-0 z-5 flex items-center pb-4 md:pb-0">
+            <div className="w-[100%] h-[100%]">
               <div className="return_student"
                   onClick={() => {
                     navigate("/students");
                   }}>
                 <img src={arrow} alt="" />
               </div>
-              <div className="student_img_div">
-                {/* <img src={`https://drive.google.com/thumbnail?id=${ProfileLink.slice(33)}`} */}
-                <img src={ProfileLink}
-                  alt=""
-                  className="profile_image"
-                />
-              </div>
-              <div className="profile_intro">
-                <div className="helper_menu">
-                  <p className="profile_name_student">{Name}</p>
-                  <p className="profile_branch">B.E - IT</p>
-                  <p className="profile_batch">
-                    {Number(Year) - 4} - {Year} Batch
-                  </p>
+              <div className="flex flex-col">
+                <div className="student_img_div">
+                  {/* <img src={`https://drive.google.com/thumbnail?id=${ProfileLink.slice(33)}`} */}
+                  <img src={ProfileLink}
+                    alt=""
+                    className="profile_image"
+                  />
                 </div>
-                <ul className="helper_menu_ul">
-                  <li
-                    onClick={() => handleClickAbout()}
-                    className={
-                      isActive === "1"
-                        ? "helper_menu_li helper_menu_li_active"
-                        : "helper_menu_li"
-                    }
+                <div className="profile_intro">
+                  <div className="helper_menu">
+                    <p className="profile_name_student">{Name}</p>
+                    <p className="profile_branch">B.E - IT</p>
+                    <p className="profile_batch">
+                      {Number(Year) - 4} - {Year} Batch
+                    </p>
+                  </div>
+                  <ul className="helper_menu_ul">
+                    <li
+                      onClick={() => handleClickAbout()}
+                      className={
+                        isActive === "1"
+                          ? "helper_menu_li helper_menu_li_active"
+                          : "helper_menu_li"
+                      }
+                    >
+                      About
+                    </li>
+                    <li
+                      onClick={() => handleClickExperience()}
+                      className={
+                        isActive === "2"
+                          ? "helper_menu_li helper_menu_li_active"
+                          : "helper_menu_li"
+                      }
+                    >
+                      Experience
+                    </li>
+                    <li
+                      onClick={() => handleClickInterview()}
+                      className={
+                        isActive === "3"
+                          ? "helper_menu_li helper_menu_li_active"
+                          : "helper_menu_li"
+                      }
+                    >
+                      Interview Details
+                    </li>
+                    <li
+                      onClick={() => handleClickAdvice()}
+                      className={
+                        isActive === "4"
+                          ? "helper_menu_li helper_menu_li_active"
+                          : "helper_menu_li"
+                      }
+                    >
+                      Advice
+                    </li>
+                  </ul>
+                </div>
+                <div className="social_links_div">
+                  <Link
+                    to={Linkedin.length > 5 ? Linkedin : "/students"}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="social_link"
                   >
-                    About
-                  </li>
-                  <li
-                    onClick={() => handleClickExperience()}
-                    className={
-                      isActive === "2"
-                        ? "helper_menu_li helper_menu_li_active"
-                        : "helper_menu_li"
-                    }
+                    <img src={linkedin} alt="" className="social_icon" />
+                  </Link>
+                  <Link
+                    to={Leetcode.length > 5 ? Leetcode : "/students"}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="social_link"
                   >
-                    Experience
-                  </li>
-                  <li
-                    onClick={() => handleClickInterview()}
-                    className={
-                      isActive === "3"
-                        ? "helper_menu_li helper_menu_li_active"
-                        : "helper_menu_li"
-                    }
+                    <img src={leetcode} alt="" className="social_icon" />
+                  </Link>
+                  <Link
+                    to={Github.length > 5 ? Github : "/students"}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="social_link"
                   >
-                    Interview Details
-                  </li>
-                  <li
-                    onClick={() => handleClickAdvice()}
-                    className={
-                      isActive === "4"
-                        ? "helper_menu_li helper_menu_li_active"
-                        : "helper_menu_li"
-                    }
+                    <img src={github} alt="" className="social_icon" />
+                  </Link>
+                  <Link
+                    to="https://mail.google.com/"
+                    rel="noreferrer"
+                    target="_blank"
+                    className="social_link"
                   >
-                    Advice
-                  </li>
-                </ul>
-              </div>
-              <div className="social_links_div">
-                <Link
-                  to={Linkedin.length > 5 ? Linkedin : "/students"}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="social_link"
-                >
-                  <img src={linkedin} alt="" className="social_icon" />
-                </Link>
-                <Link
-                  to={Leetcode.length > 5 ? Leetcode : "/students"}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="social_link"
-                >
-                  <img src={leetcode} alt="" className="social_icon" />
-                </Link>
-                <Link
-                  to={Github.length > 5 ? Github : "/students"}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="social_link"
-                >
-                  <img src={github} alt="" className="social_icon" />
-                </Link>
-                <Link
-                  to="https://mail.google.com/"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="social_link"
-                >
-                  <img src={gmail} alt="" className="social_icon" />
-                </Link>
+                    <img src={gmail} alt="" className="social_icon" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-          <div className="profile_div_center">
+          <div className="md:overflow-hidden md:overflow-x-scroll w-full md:w-[80%] h-full md:h-[100%] flex justify-center items-start p-[20px] pt-[40px]">
             <div className="profile_content">
               {isAbout ? (
                 <div className="about">

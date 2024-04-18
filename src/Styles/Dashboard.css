@@ -50,7 +50,7 @@
   /* border-left-width: 10px; */
   /* border-left-color: #f8b217; */
   height: 100%;
-  width: 49%;
+  /* width: 49%; */
   padding: 20px;
   border-radius: 15px;
   background-color: #2d2d2d;
@@ -128,11 +128,10 @@
   filter: invert();
 }
 .dashboard_headingtext {
-  color: #fff;
   font-weight: 800;
   margin-top: 20px;
   margin-bottom: 15px;
-  width: 100%;
+  /* width: 100%; */
   /* display: flex;
   justify-content: space-between;
   align-items: center; */
@@ -172,7 +171,7 @@
   height: 25px;
   filter: invert();
   margin-right: 8px;
-}
+} 
 .admin_login:hover{
   color: #fbca67;
 }

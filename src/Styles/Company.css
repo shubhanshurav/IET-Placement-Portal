@@ -1,7 +1,5 @@
 /* CardContainer.css */
 .card-container1 {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
@@ -17,25 +15,23 @@
 .dashboard_bottom {
   width: 100%;
   height: fit-content;
-  margin-left: 4%;
+  /* margin-left: 4%; */
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 .cards1 {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: flex-start;
   width: 100%;
   height: fit-content;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 .card1 {
   border-radius: 8px;
   padding: 5px;
   margin: 14px;
   flex: 0 0 calc(22.5% - 20px);
-  max-width: calc(22.5% - 20px);
+  /* max-width: calc(22.5% - 20px); */
   width: 100%;
   height: 85px;
   text-align: center;
@@ -62,7 +58,7 @@
   justify-content: flex-start;
   align-items: center;
   text-align: left;
-  margin-left: 15px;
+  /* margin-left: 15px; */
   background-color: #222222;
   position: -webkit-sticky;
   position: sticky;
