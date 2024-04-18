@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import dummy from '../Assets/dummy.jpg';
 import toast, { Toaster } from 'react-hot-toast';
 import { placedStudentDetails } from "../data/placedstudentData";
-
+import { ImMenu, ImCross } from "react-icons/im";
 
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth, database } from '../firebaseConfig';
@@ -175,7 +175,7 @@ function Dashboard({ data }) {
 
       {isSidebarVisible && <Sidebar param={"dashboard"} />}
 
-      <div className="student_div_center w-[94%] md:w-[80%]">
+      <div className="student_div_center w-[90%] m-auto">
         {/* <div className="dashboard_top">
           <div className="search_bar_div">
             <input className='search_bar' type='text' placeholder='Seach Companies, Internships, Hackathons, or Students...' />
@@ -183,17 +183,17 @@ function Dashboard({ data }) {
               <img src={search} alt="pic" className="search_icon" />
             </div>
           </div>
-        </div> */}
+        </div> */} 
 
         {data.length > 0 ?
           <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
               {/* Toggle Button */}
-            <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+            <button className="z-10 ml-[-1rem] md:mr-[45rem] pt-2 text-white text-2xl bg-richblack-800 rounded"
             onClick={toggleSidebar}>
-                {isSidebarVisible ? "✖️":"♒"}
+                {isSidebarVisible ? <ImCross /> : <ImMenu />}
             </button>
-            <div className="dashboard_heading">
-              <h2 className="dashboard_headingtext text-[1.7rem]  md:text-[2rem]">Welcome To Dashboard <span className="text font-normal text-2xl md:text-3xl">(2023)</span></h2>
+            <div className="dashboard_heading m-auto">
+              <h2 className="dashboard_headingtext text-[1.7rem] md:text-[2rem] md:w-[100%] w-[60%] text-[#fff]">Welcome To Dashboard <span className="text font-normal text-2xl md:text-3xl">(2023)</span></h2>
               {authUser ?
                 <button className="admin_profile" onClick={() => { navigate('/admin') }}>
                   <p className="admin_div">
@@ -202,33 +202,33 @@ function Dashboard({ data }) {
                   </p>
                   <img src={user} className="admin_img" alt="admin_img"/>
                 </button>
-                : <button className="w-fit flex justify-content-center items-center text-lg font-bold bg-[#373737] p-1 rounded-full ps-2 pe-2 hover:bg-[#4a71fc]" onClick={() => { navigate('/login') }}><img src={user} className="admin_img" />Login</button>}
+                : <button className="w-fit flex justify-content-center items-center text-lg font-bold bg-blue-800 rounded-full px-2 md:px-3 py-1 hover:bg-blue-600" onClick={() => { navigate('/login') }}><img src={user} alt="loginimg" className="admin_img" />Login</button>}
               {/* <button className="admin"><img src={user} className="user_img"/> Login</button> */}
             </div>
             <div className="flex_container1 flex flex-wrap">
-              <div className="flex_item1 flex flex-col gap-3 md:gap-0 w-full md:w-[58%] h-fit md:h-[100%]">
-                <div className="flex_item1-1 gap-2 flex w-full md:w-[48%] h-fit md:h-[100%] md:gap-0">
-                  <div className="flex_item">
+              <div className="flex_item1 flex flex-col gap-3 md:gap-0 w-full md:w-[55%] h-fit md:h-[100%]">
+                <div className="flex_item1-1 gap-2 flex w-full md:w-[90%] h-fit md:h-[100%] md:gap-0">
+                  <div className="flex_item w-full md:w-[48%]">
                     <h3 className="dashboard_text">Total Students</h3>
                     <h2 id="total_student" className="text-[1.5rem] md:text-[2rem]">{stats.totalStudents}</h2>
                   </div>
-                  <div className="flex_item">
+                  <div className="flex_item w-full md:w-[48%]">
                     <h3 className="dashboard_text">Placed Students</h3>
                     <h2 id="placed_student" className="text-[1.5rem] md:text-[2rem]">{stats.placedStudents}</h2>
                   </div>
                 </div>
-                <div className="flex_item1-2 gap-2 flex w-full md:w-[48%] h-fit md:h-[100%] md:gap-0">
-                  <div className="flex_item">
+                <div className="flex_item1-2 gap-2 flex w-full md:w-[90%] h-fit md:h-[100%] md:gap-0">
+                  <div className="flex_item w-full md:w-[48%]">
                     <h3 className="dashboard_text">Total Companies</h3>
                     <h2 id="total_company" className="text-[1.5rem] md:text-[2rem]">{stats.totalCompanies}</h2>
                   </div>
-                  <div className="flex_item">
+                  <div className="flex_item w-full md:w-[48%]">
                     <h3 className="dashboard_text">Average Package</h3>
                     <h2 id="avg_salary" className="text-[1.5rem] md:text-[2rem]">{stats.averagePackage} LPA</h2>
                   </div>
                 </div>
               </div>
-              <div className="flex_item2 flex flex-col gap-3 md:gap-0 w-full md:w-[40%] h-fit md:h-[100%] mt-[12px] md:mt-0">
+              <div className="flex_item2 flex flex-col gap-3 md:gap-0 w-full md:w-[45%] h-fit md:h-[100%] mt-[12px] md:mt-0">
                 <h3 className="dashboard_text">Job Profiles</h3>
                 {/* {
                   data.slice(0, 3).map((item, index) => {
@@ -259,7 +259,7 @@ function Dashboard({ data }) {
                     jdData.filter((word) => word.length <= 20).map((item, index) => {
                       return (
                         <>
-                          <div className="flex align-items-center justify-content-center p-1 bg-[#373737] hover:bg-[#444444] rounded-lg cursor-pointer" key={index}>
+                          <div className="flex align-items-center justify-content-center text-slate-100 px-2 py-1 bg-[#373737] hover:bg-[#444444] rounded-lg cursor-pointer" key={index}>
                             <p className="text text-gray font-bold" onClick={()=>{navigate('/students')}}>{item}</p>
                           </div>
                         </>
@@ -269,8 +269,8 @@ function Dashboard({ data }) {
                 </div>
               </div>
             </div>
-            <div className="flex_container2 flex flex-wrap gap-4 md:gap-0">
-              <div className="flex_item3 w-full md:w-[51%] h-fit md:h-[100%] ">
+            <div className="flex_container2 flex flex-wrap gap-4 md:gap-0 pt-2">
+              <div className="flex_item3 w-full md:w-[50%] h-fit md:h-[100%] ">
                 <h3 className="dashboard_text">Top 5 Packages</h3>
                 <div className="packages_div">
                   {

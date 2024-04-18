@@ -9,6 +9,8 @@ import InternshipLoader from "./InternshipLoader";
 import InternshipCard from "./InternshipCard";
 import check from '../Assets/check.png';
 import sort from '../Assets/filter.png';
+import { ImMenu, ImCross } from "react-icons/im";
+
 
 // const URL1 =
 //   "https://script.google.com/macros/s/AKfycbyQQE80wVyNKq8OMRigxzicAAVHrTUsCF0jXt4NOoPItsCmR9V9KPF5M0v_mxa1qQzd/exec";
@@ -67,13 +69,13 @@ const Internship = ({ internshipData }) => {
   return (
     <div className="student_div">
       {isSidebarVisible && <Sidebar param={"internships"} />}
-      <div className="student_div_center">
-        <div className="dashboard_top student_searchbar">
+      <div className="student_div_center w-[98%]">
           {/* Toggle Button */}
-          <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+          <button className=" pt-2 z-10 ml-[7.5rem] text-white text-2xl bg-richblack-800 rounded"
            onClick={toggleSidebar}>
-              {isSidebarVisible ? "✖️":"♒"}
+                {isSidebarVisible ? <ImCross /> : <ImMenu />}
           </button>
+        <div className="dashboard_top student_searchbar">
           <div className="search_bar_div">
             <input
               className="search_bar"

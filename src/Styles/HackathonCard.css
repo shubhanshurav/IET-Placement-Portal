@@ -1,12 +1,12 @@
 .card2{
     /* background-color: red; */
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     justify-content: space-between;
     align-items: flex-start;
     flex: 0 0 calc(32% - 20px);
     max-width: cal(32% - 20px);
-    min-width: 260px;
+    /* min-width: 380px;  */
     min-height: auto;
     padding: 1rem;
     background-color: #373737;
@@ -19,7 +19,7 @@
     transition: 0.3s;
     text-decoration: none;
     position: relative;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 .card2:hover{
     text-decoration: none;

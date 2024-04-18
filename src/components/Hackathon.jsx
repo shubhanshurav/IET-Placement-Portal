@@ -6,12 +6,14 @@ import user from '../Assets/user_profile.png';
 import search from '../Assets/search.png';
 import '../Styles/Hackathon.css';
 import HackathonLoader from './HackathonLoader';
+import { ImMenu, ImCross } from "react-icons/im";
+
 
 const Hackathon = ({hackathonsData,loading}) => {
   const [q, setQ] = useState("");
   const [searchParam] = useState(["title", "description", "deadline"]);
 
-  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+  const [isSidebarVisible, setSidebarVisibility] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarVisibility(!isSidebarVisible);
@@ -34,13 +36,13 @@ const Hackathon = ({hackathonsData,loading}) => {
   return (
     <div className='student_div'>
       {isSidebarVisible && <Sidebar param={'hackathons'} />}
-      <div className="student_div_center">
-        <div className="dashboard_top student_searchbar">
+      <div className="student_div_center w-[94%] m-auto">
           {/* Toggle Button */}
-          <button className=" top-80 left-0 p-[2px] z-10 ml-[-5.5rem] text-white text-2xl bg-richblack-800 rounded"
+          <button className="pt-2 z-10 ml-[7.5rem] text-white text-2xl bg-richblack-800 rounded"
            onClick={toggleSidebar}>
-              {isSidebarVisible ? "✖️":"♒"}
+             {isSidebarVisible ? <ImCross /> : <ImMenu />}
           </button>
+        <div className="dashboard_top student_searchbar">
           <div className="search_bar_div">
             <input className='search_bar' type='text' value={q}
               onChange={(e) => {
@@ -52,11 +54,11 @@ const Hackathon = ({hackathonsData,loading}) => {
           </div>
 
         </div>
-        <div className="dashboard_bottom hackthon_div">
+        <div className="dashboard_bottom hackthon_div m-auto">
           {/* <div className='hackathon_title_up'>
             <h3 className='heading_ text-white font-extrabold text-3xl'>Upcoming Hackathons...</h3>
           </div> */}
-          <div className="hackthon_class card-container flex flex-wrap py-10">
+          <div className="hackthon_class card-container grid grid-cols-1 md:grid-cols-3 gap-2 m-auto py-10">
             {/* {loading || hackathonsData.length === 0 ?
               <HackathonLoader /> :
               hackathonsData && searchItem(hackathonsData).length > 0 ? searchItem(hackathonsData).map((item, i) => {
