@@ -65,8 +65,9 @@ const Company = () => {
             </div>
           </div>
         </div>
+        
         <div className="dashboard_bottom">
-          <div className="card-container1 flex flex-wrap">
+          <div className="card-container1 flex flex-wrap"> 
           <h1 className="companies_title font-bold text-3xl z-0 py-2 ml-[-15px]">List of companies that visit our campus</h1>
             <div className="cards1 grid grid-cols-2 md:grid-cols-4 ml-[-15px] px-1"> 
               {searchItem(companiesList).length>0?searchItem(companiesList).map((item, index) => {

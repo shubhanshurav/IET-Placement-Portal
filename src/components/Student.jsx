@@ -116,7 +116,7 @@ const Student = ({ data }) => {
             onClick={toggleSidebar}>
                 {isSidebarVisible ? <ImCross /> : <ImMenu />}
             </button>
-        </div>
+        </div> 
         <div className="dashboard_top student_searchbar ">
           <div className="search_bar_div ">
             <input className='search_bar' onChange={(e) => setQ(e.target.value)} value={q} type='text' placeholder='Seach Companies, Students, or Skills ...' />
