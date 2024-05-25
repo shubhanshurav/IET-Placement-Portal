@@ -204,7 +204,7 @@ export const placedStudentDetails = [
         "Topics": "Quick Sorting , single linked list pseudo code ",
         "Advice": "Do solve DSA questions consistently , prepare your resume. They will ask nothing outside from resume.. so all the best . ",
         "Mistakes": "Not doing questions consistently ..",
-        "ProfileLink": "https://drive.google.com/file/d/14AIHpzOS-c92STk-MErngHGbXhhj_GSZ/view?usp=drivesdk",
+        "ProfileLink": "https://drive.google.com/file/d/14AIHpzOS-c92STk-MErngHGbXhhj_GSZ/view?",
         "Skills": "MySQL, SQL, UI/UX, Linux, Git/ Github",
         "InternshipName": "PTC SOFTWARE, Chedoo tech ",
         "InternshipDuration": "11 months in Ptc and 3 months in chedo tech ",
