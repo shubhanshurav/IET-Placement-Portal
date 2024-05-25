@@ -194,7 +194,7 @@ export const placedStudentDetails = [
         "DOB": "2003-02-17",
         "Company": "L & T",
         "Jobprofile": "Civil Engineer",
-        "Package": 90 lakhs,
+        "Package": 90,
         "Rounds": "Aptitude, Technical, Coding, HR",
         "Duration": "10-15 days",
         "Difficulty": "Medium",
