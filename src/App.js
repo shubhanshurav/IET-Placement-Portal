@@ -21,15 +21,18 @@ import { database,auth } from '../src/firebaseConfig.js';
 import Admin from './components/Admin.jsx';
 import ForgotPassword from './components/ForgotPassword.jsx';
 import { placedStudentDetails } from './data/placedstudentData.js';
+import {internshipDetails} from "./data/internshipDetails"
 
 function App() {
   // const URL = 'https://script.googleusercontent.com/macros/echo?user_content_key=tXsxy2-hvwS31b9L92CSnDeGZ3CQNEO1_cFYVGNdKtG1HykzKeta_lLa9mHb-85_JxKtFebIpJoA88k0vdcRRVxmI6kAp73Cm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDogGNI0BST8X8uIhrZnF83Ik5WQDsaGUaum2emq-uGmqccBjBlNb7s21kAJBYLaTnc6Qy88gk9KnUhosPf3J4uecRGUEjL7GQ&lib=Mu7cgZbbJR3Jsd9m20phPH86idZU4jP8o';
   // const URL1 = "https://script.google.com/macros/s/AKfycbyQQE80wVyNKq8OMRigxzicAAVHrTUsCF0jXt4NOoPItsCmR9V9KPF5M0v_mxa1qQzd/exec";
 
   const [studentsData, setStudents] = useState(placedStudentDetails);
-  const [internshipData, setInternshipData] = useState([]);
+  const [internship, setInternship] = useState(internshipDetails);
   const [hackathonsData,setHackathonsaData] = useState(hackathons);
  const [loading, setLoading] = useState(true);
+//  console.log(internship);
+
 
   //internship
   // const getInternshipData = async () => {
@@ -103,7 +106,7 @@ function App() {
         <Route path='/companies' element={<Company data={studentsData} />} />
         <Route path="/hackathons" element={<Hackathon hackathonsData = {hackathonsData} loading = {loading} setLoading = {setLoading} />} />
         <Route path='/resetpassword' element={<ForgotPassword />} />
-        <Route path='/internships' element={<Internship internshipData={internshipData} />} />
+        <Route path='/internships' element={<Internship internshipData={internship} loading = {loading} setLoading = {setLoading}/>} />
         <Route path='/students/:ID' element={<Profile data={studentsData} />} />
         <Route path='*' element={<Home />} />
 

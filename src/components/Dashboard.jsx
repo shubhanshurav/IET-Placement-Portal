@@ -38,6 +38,12 @@ function Dashboard({ data }) {
 
   const [isSidebarVisible, setSidebarVisibility] = useState(true);
 
+  // Get the current date
+  let currentDate = new Date();
+
+  // Extract the current year from the date object
+  let currentYear = currentDate.getFullYear();
+
   const toggleSidebar = () => {
     setSidebarVisibility(!isSidebarVisible);
   };
@@ -193,7 +199,7 @@ function Dashboard({ data }) {
                 {isSidebarVisible ? <ImCross /> : <ImMenu />}
             </button>
             <div className="dashboard_heading m-auto">
-              <h2 className="dashboard_headingtext text-[1.7rem] md:text-[2rem] md:w-[100%] w-[60%] text-[#fff]">Welcome To Dashboard <span className="text font-normal text-2xl md:text-3xl">(2023)</span></h2>
+              <h2 className="dashboard_headingtext text-[1.7rem] md:text-[2rem] md:w-[100%] w-[60%] text-[#fff]">Welcome To Dashboard <span className="text font-normal text-2xl md:text-3xl">{currentYear}</span></h2>
               {authUser ?
                 <button className="admin_profile" onClick={() => { navigate('/admin') }}>
                   <p className="admin_div">

@@ -10,6 +10,8 @@ import InternshipCard from "./InternshipCard";
 import check from '../Assets/check.png';
 import sort from '../Assets/filter.png';
 import { ImMenu, ImCross } from "react-icons/im";
+// import {internshipDetails} from "../data/internshipDetails";
+
 
 
 // const URL1 =
@@ -17,6 +19,10 @@ import { ImMenu, ImCross } from "react-icons/im";
 
 const Internship = ({ internshipData }) => {
   const [q, setQ] = useState("");
+
+  console.log(internshipData);
+
+  // const [internship,setInternship] = useState(internshipDetails);
 
   const [isSidebarVisible, setSidebarVisibility] = useState(true);
 
@@ -30,7 +36,7 @@ const Internship = ({ internshipData }) => {
     return items.filter((item) => {
       return searchParam.some((newItem) => {
         return (
-          item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+          item[newItem]?.toString().toLowerCase().indexOf(q.toLowerCase()) > -1
         );
       });
     });
@@ -112,7 +118,7 @@ const Internship = ({ internshipData }) => {
               <h1 className="font-bold">Upcoming Internships...</h1>
               <div className="InternshipList">
                 {/* {internshipData.map((data, index) => { */}
-                {searchItem(internshipData).length>0?searchItem(internshipData).map((item, i) => {
+                {searchItem(internshipData).length>0 ? searchItem(internshipData).map((item, i) => {
                   const deadlineDate = new Date(item.deadline);
                   const status = deadlineDate >= currDate ? "Live" : "Closed";
                   return <InternshipCard data={item} status={status} key={i} />;

@@ -24,7 +24,7 @@ const Student = ({ data }) => {
   // const navigate = useNavigate();
   const location = useLocation();
   // console.log(" data = ",data);
-  const [placedData, setPlacedData] = useState(placedStudentDetails)
+  const [placedData, setPlacedData] = useState(placedStudentDetails);
 
   const [q, setQ] = useState("");
 
