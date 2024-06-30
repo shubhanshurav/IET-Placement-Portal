@@ -41,8 +41,8 @@ const StudentForm = () => {
   };
 
   return (
-    <div className="mx-auto p-4 bg-gray-100 rounded-lg shadow-md w-[60%]">
-      <h1 className="text-3xl font-bold text-black border-b-4 border-black w-fit m-auto mb-4">Student Placement Form</h1>
+    <div className="mx-auto p-4 bg-gray-100 rounded-lg shadow-md md:w-[60%] w-fit ">
+      <h1 className="text-xl md:text-3xl font-bold text-black border-b-4 border-black w-fit m-auto mb-4">Student Placement Form</h1>
       <form onSubmit={onSubmit} className=''>
         <div className="mb-3">
           <label className="block text-gray-700">Name</label>
@@ -54,7 +54,7 @@ const StudentForm = () => {
             className="w-full px-3 py-1 border border-gray-300 rounded-md"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-2">
           <label className="block text-gray-700">Department</label>
           <input
             type="text"
@@ -64,7 +64,7 @@ const StudentForm = () => {
             className="w-full px-3 py-1 border border-gray-300 rounded-md"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-2">
           <label className="block text-gray-700">Company Name</label>
           <input
             type="text"
@@ -74,7 +74,7 @@ const StudentForm = () => {
             className="w-full px-3 py-1 border border-gray-300 rounded-md"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-2">
           <label className="block text-gray-700">Package</label>
           <input
             type="text"
@@ -84,7 +84,7 @@ const StudentForm = () => {
             className="w-full px-3 py-1 border border-gray-300 rounded-md"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-2">
           <label className="block text-gray-700">Year</label>
           <input
             type="text"
@@ -94,7 +94,7 @@ const StudentForm = () => {
             className="w-full px-3 py-1 border border-gray-300 rounded-md"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-2">
           <label className="block text-gray-700">Student Image</label>
           <input
             type="file"
