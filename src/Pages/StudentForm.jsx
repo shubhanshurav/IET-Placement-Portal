@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const StudentForm = () => {
   const [name, setName] = useState('');
@@ -20,20 +23,20 @@ const StudentForm = () => {
     formData.append('image', image);
 
     try {
-      const res = await axios.post('https://placement-portal-backend-rweo.onrender.com/api/v1/placed', formData, {
+      const res = await axios.post(BASE_URL+'/placed', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log(res.data.success);
       if (res.data.success) {
-        alert('Student added successfully');
+        toast.success('Student added successfully');
       } else {
-        alert('Failed to add student');
+        toast.error('Failed to add student');
       }
     } catch (err) {
       console.error(err);
-      alert('An error occurred while adding the student');
+      toast.error('An error occurred while adding the student');
     }
   };
 
@@ -107,6 +110,7 @@ const StudentForm = () => {
           Submit
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };

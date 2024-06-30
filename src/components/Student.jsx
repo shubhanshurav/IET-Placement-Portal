@@ -231,7 +231,7 @@ function StudentCards() {
                 className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
               />
               <h3 className="text-xl font-semibold mb-2 text-center">{student.name}</h3>
-              <p className="text-gray-700 mb-2 text-center">Email: {student.email}</p>
+              {/* <p className="text-gray-700 mb-2 text-center">Email: {student.email}</p> */}
               <p className="text-gray-700 mb-2 text-center">Company: {student.company}</p>
               <p className="text-gray-700 mb-2 text-center">Package: {student.package}</p>
             </div>
