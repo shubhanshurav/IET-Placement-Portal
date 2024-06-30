@@ -12,6 +12,17 @@ const StudentForm = () => {
   const [year, setYear] = useState('');
   const [image, setImage] = useState(null);
 
+    // Function to reset the form fields
+    const resetForm = () => {
+      setName('');
+      setDepartment('');
+      setCompanyName('');
+      setPackageAmount('');
+      setYear('');
+      setImage(null);
+    };
+  
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -31,6 +42,7 @@ const StudentForm = () => {
       console.log(res.data.success);
       if (res.data.success) {
         toast.success('Student added successfully');
+        resetForm();
       } else {
         toast.error('Failed to add student');
       }
