@@ -25,7 +25,7 @@ const StudentForm = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(res.data);
+      console.log(res.data.success);
       if (res.data.success) {
         alert('Student added successfully');
       } else {
@@ -74,7 +74,7 @@ const StudentForm = () => {
         <div className="mb-3">
           <label className="block text-gray-700">Package</label>
           <input
-            type="number"
+            type="text"
             value={packageAmount}
             onChange={(e) => setPackageAmount(e.target.value)}
             required
