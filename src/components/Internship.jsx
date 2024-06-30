@@ -7,12 +7,10 @@ import "../Styles/Internship.css";
 import "../Styles/InternshipList.css";
 import InternshipLoader from "./InternshipLoader";
 import InternshipCard from "./InternshipCard";
-import check from '../Assets/check.png';
-import sort from '../Assets/filter.png';
+import check from "../Assets/check.png";
+import sort from "../Assets/filter.png";
 import { ImMenu, ImCross } from "react-icons/im";
 // import {internshipDetails} from "../data/internshipDetails";
-
-
 
 // const URL1 =
 //   "https://script.google.com/macros/s/AKfycbyQQE80wVyNKq8OMRigxzicAAVHrTUsCF0jXt4NOoPItsCmR9V9KPF5M0v_mxa1qQzd/exec";
@@ -44,6 +42,7 @@ const Internship = ({ internshipData }) => {
   const currDate = new Date();
 
   const [check_flag, setCheckFlag] = useState(0);
+
   const [showDiv, setShowDiv] = useState(false);
 
   const SortLatest = () => {
@@ -56,31 +55,33 @@ const Internship = ({ internshipData }) => {
         return 0;
       }
     });
-  }
+  };
   const SortbyDate = () => {
     internshipData.reverse();
-  }
+  };
 
   const handleCheck1 = (e) => {
     setCheckFlag(e);
     SortLatest();
     setShowDiv(!showDiv);
-  }
+  };
   const handleCheck2 = (e) => {
     setCheckFlag(e);
     SortbyDate();
     setShowDiv(!showDiv);
-  }
+  };
 
   return (
     <div className="student_div">
       {isSidebarVisible && <Sidebar param={"internships"} />}
       <div className="student_div_center w-[98%]">
-          {/* Toggle Button */}
-          <button className=" pt-2 z-10 ml-[7.5rem] text-white text-2xl bg-richblack-800 rounded"
-           onClick={toggleSidebar}>
-                {isSidebarVisible ? <ImCross /> : <ImMenu />}
-          </button>
+        {/* Toggle Button */}
+        <button
+          className=" pt-2 z-10 ml-[7.5rem] text-white text-2xl bg-richblack-800 rounded"
+          onClick={toggleSidebar}
+        >
+          {isSidebarVisible ? <ImCross /> : <ImMenu />}
+        </button>
         <div className="dashboard_top student_searchbar">
           <div className="search_bar_div">
             <input
@@ -101,13 +102,59 @@ const Internship = ({ internshipData }) => {
               />
             </div>
           </div>
-          <div className='filter_div'>
-            <p className='sort_name' onClick={() => { setShowDiv(!showDiv) }}>filter by</p>
-            <img src={sort} className='sort_img' alt="sortIMG" onClick={() => { setShowDiv(!showDiv) }} />
-            <div className={showDiv ? 'sort_dropdown filter_dropdown' : 'sort_dropdown_none'}>
-              <ul className='sort_ul'>
-                <li className='sort_li filter_li' onClick={(e) => { handleCheck1(1) }}>Latest &#42779;<img src={check} className={check_flag === 1 ? 'check_img' : "check_img_none"} alt="checkIMG"/></li>
-                <li className='sort_li filter_li' onClick={(e) => { handleCheck2(2) }}>Date &#42779;<img src={check} className={check_flag === 2 ? 'check_img' : "check_img_none"} alt="checkIMG"/></li>
+          <div className="filter_div">
+            <p
+              className="sort_name"
+              onClick={() => {
+                setShowDiv(!showDiv);
+              }}
+            >
+              filter by
+            </p>
+            <img
+              src={sort}
+              className="sort_img"
+              alt="sortIMG"
+              onClick={() => {
+                setShowDiv(!showDiv);
+              }}
+            />
+            <div
+              className={
+                showDiv ? "sort_dropdown filter_dropdown" : "sort_dropdown_none"
+              }
+            >
+              <ul className="sort_ul">
+                <li
+                  className="sort_li filter_li"
+                  onClick={(e) => {
+                    handleCheck1(1);
+                  }}
+                >
+                  Latest &#42779;
+                  <img
+                    src={check}
+                    className={
+                      check_flag === 1 ? "check_img" : "check_img_none"
+                    }
+                    alt="checkIMG"
+                  />
+                </li>
+                <li
+                  className="sort_li filter_li"
+                  onClick={(e) => {
+                    handleCheck2(2);
+                  }}
+                >
+                  Date &#42779;
+                  <img
+                    src={check}
+                    className={
+                      check_flag === 2 ? "check_img" : "check_img_none"
+                    }
+                    alt="checkIMG"
+                  />
+                </li>
               </ul>
             </div>
           </div>
@@ -118,15 +165,21 @@ const Internship = ({ internshipData }) => {
               <h1 className="font-bold">Upcoming Internships...</h1>
               <div className="InternshipList">
                 {/* {internshipData.map((data, index) => { */}
-                {searchItem(internshipData).length>0 ? searchItem(internshipData).map((item, i) => {
-                  const deadlineDate = new Date(item.deadline);
-                  const status = deadlineDate >= currDate ? "Live" : "Closed";
-                  return <InternshipCard data={item} status={status} key={i} />;
-                })
-                :
-                <div className='center_div'>
-                  <h3 className='text-xl font-bold text-red-500 '>No Records Found!</h3>
-                </div>}
+                {searchItem(internshipData).length > 0 ? (
+                  searchItem(internshipData).map((item, i) => {
+                    const deadlineDate = new Date(item.deadline);
+                    const status = deadlineDate >= currDate ? "Live" : "Closed";
+                    return (
+                      <InternshipCard data={item} status={status} key={i} />
+                    );
+                  })
+                ) : (
+                  <div className="center_div">
+                    <h3 className="text-xl font-bold text-red-500 ">
+                      No Records Found!
+                    </h3>
+                  </div>
+                )}
               </div>
             </div>
           ) : (

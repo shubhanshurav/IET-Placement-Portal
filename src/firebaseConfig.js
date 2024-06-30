@@ -12,22 +12,18 @@ import { getAuth } from "firebase/auth";
 //     appId: "1:397452433558:web:ac46af213c36af57220ab7"
 // };
 
-
 const firebaseConfig = {
-    apiKey: "AIzaSyAQCEFMHkqF2XQpN9RNbjtP1XwmiNQs9qY",
-    authDomain: "iet-placement-portal.firebaseapp.com",
-    databaseURL: "https://iet-placement-portal-default-rtdb.firebaseio.com/",
-    projectId: "iet-placement-portal",
-    storageBucket: "iet-placement-portal.appspot.com",
-    messagingSenderId: "1094339849319",
-    appId: "1:1094339849319:web:5683e200c93644234b78c2",
-    measurementId: "G-K6E4SVJLNE"
+  apiKey: "AIzaSyAQCEFMHkqF2XQpN9RNbjtP1XwmiNQs9qY",
+  authDomain: "iet-placement-portal.firebaseapp.com",
+  databaseURL: "https://iet-placement-portal-default-rtdb.firebaseio.com/",
+  projectId: "iet-placement-portal",
+  storageBucket: "iet-placement-portal.appspot.com",
+  messagingSenderId: "1094339849319",
+  appId: "1:1094339849319:web:5683e200c93644234b78c2",
+  measurementId: "G-K6E4SVJLNE",
 };
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
-export {database,auth};
-
-
-
+export { database, auth };
