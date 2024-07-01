@@ -200,17 +200,20 @@
 
 
 import React, { useState, useEffect } from 'react';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 
 function StudentCards() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    fetch('https://placement-portal-backend-rweo.onrender.com/api/v1/placed')
+    fetch(BASE_URL + '/placed')
       .then(response => response.json())
       .then(data => {
         // Assuming the structure is under responseDetails array
         if (data && data.responseDetails) {
           setStudents(data.responseDetails);
+          console.log(data.responseDetails)
         } else {
           console.error('Invalid data structure from API');
         }
@@ -232,7 +235,7 @@ function StudentCards() {
               />
               <h3 className="text-xl font-semibold mb-2 text-center">{student.name}</h3>
               {/* <p className="text-gray-700 mb-2 text-center">Email: {student.email}</p> */}
-              <p className="text-gray-700 mb-2 text-center">Company: {student.company}</p>
+              <p className="text-gray-700 mb-2 text-center">Company: {student.companyName}</p>
               <p className="text-gray-700 mb-2 text-center">Package: {student.package}</p>
             </div>
           ))
