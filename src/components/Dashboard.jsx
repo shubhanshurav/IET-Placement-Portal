@@ -28,13 +28,31 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Dashboard({ data }) {
   const [authUser, setAuthUser] = useState(null);
   const [username, setUsername] = useState("");
   const [maxpackages, setPackages] = useState(null);
-  const [placedData, setPlacedData] = useState(placedStudentDetails);
+  const [placedData, setPlacedData] = useState([]);
 
-  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+
+  useEffect(() => {
+    fetch(BASE_URL + '/placed')
+      .then(response => response.json())
+      .then(data => {
+        // Assuming the structure is under responseDetails array
+        if (data && data.responseDetails) {
+          setPlacedData(data.responseDetails);
+          // console.log(data.responseDetails)
+        } else {
+          console.error('Invalid data structure from API');
+        }
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  const [isSidebarVisible, setSidebarVisibility] = useState(false);
 
   // Get the current date
   let currentDate = new Date();
@@ -183,15 +201,6 @@ function Dashboard({ data }) {
       {isSidebarVisible && <Sidebar param={"dashboard"} />}
 
       <div className="student_div_center w-[90%] m-auto">
-        {/* <div className="dashboard_top">
-          <div className="search_bar_div">
-            <input className='search_bar' type='text' placeholder='Seach Companies, Internships, Hackathons, or Students...' />
-            <div className="search_icon_div">
-              <img src={search} alt="pic" className="search_icon" />
-            </div>
-          </div>
-        </div> */}
-
         {data.length > 0 ? (
           <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
             {/* Toggle Button */}
@@ -338,9 +347,9 @@ function Dashboard({ data }) {
                 <div className="packages_div">
                   {
                     // data.slice(0, 5).map((item, index) => {
-                    placedData.slice(0, 5).map((item, index) => {
-                      const { Name, Package, Company, UID, ProfileLink, Year } =
-                        item;
+                    placedData.slice(0, 5)?.map((item, index) => {
+                      const { name, package: packageAmount, companyName, image, year} =  item;
+                      // console.log(item);
                       // const profileImg = ProfileLink.slice(33,);
 
                       return (
@@ -348,7 +357,7 @@ function Dashboard({ data }) {
                           key={index}
                           className="highest_package"
                           onClick={() => {
-                            navigate(`/students/${UID}`);
+                            navigate(`/students/${name}`);
                           }}
                         >
                           {/* {profileImg ?
@@ -357,24 +366,25 @@ function Dashboard({ data }) {
                             : <img src={dummy} alt="pic" className="card_img_dashboard spin circle" />} */}
 
                           <img
-                            src={ProfileLink}
+                            src={image}
                             className="card_img_dashboard spin circle"
                             alt="Not Found"
                           />
                           <h3 className="highest_packagetext1">
                             <span className="text-animation">
-                              {Name.split(" ")[0] +
+                              {name.split(" ")[0] +
                                 " " +
-                                Name.split(" ")[Name.split(" ").length - 1]}
+                                name.split(" ")[name.split(" ").length - 1]}
                             </span>
                             <span className="highest_packagetext2">
-                              {Company}
+                              {companyName}
                             </span>
                           </h3>
                           <h3 className="highest_packagetext2 highest_packagetext3">
-                            {Package} LPA{" "}
-                            <span className="year_dashboard">{Year} Batch</span>{" "}
-                          </h3>
+                            {packageAmount} LPA{" "}
+                            <span className="year_dashboard">{year} Batch</span>{" "}
+                            </h3>
+                            {/* <span className="year_dashboard">{year} Batch</span>{" "} */}
                         </div>
                       );
                     })

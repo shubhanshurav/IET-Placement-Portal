@@ -197,23 +197,23 @@
 
 
 
-
-
 import React, { useState, useEffect } from 'react';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-
 function StudentCards() {
   const [students, setStudents] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [yearFilter, setYearFilter] = useState('');
+  const [departmentFilter, setDepartmentFilter] = useState('');
+  // const [packageFilter, setPackageFilter] = useState('');
 
   useEffect(() => {
     fetch(BASE_URL + '/placed')
       .then(response => response.json())
       .then(data => {
-        // Assuming the structure is under responseDetails array
         if (data && data.responseDetails) {
           setStudents(data.responseDetails);
-          console.log(data.responseDetails)
+          setFilteredStudents(data.responseDetails);
         } else {
           console.error('Invalid data structure from API');
         }
@@ -221,22 +221,80 @@ function StudentCards() {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
+  useEffect(() => {
+    filterStudents();
+  }, [yearFilter, departmentFilter]);
+  // }, [yearFilter, departmentFilter, packageFilter]);
+
+  const filterStudents = () => {
+    let filtered = students;
+
+    if (yearFilter) {
+      filtered = filtered.filter(student => student.year === yearFilter);
+    }
+
+    if (departmentFilter) {
+      filtered = filtered.filter(student => student.department === departmentFilter);
+    }
+
+    // if (packageFilter) {
+    //   filtered = filtered.filter(student => parseFloat(student.package) >= parseFloat(packageFilter));
+    // }
+
+    setFilteredStudents(filtered);
+  };
+
   return (
-    <div className="student-cards p-4">
-      <h2 className="text-3xl font-bold mb-8 text-center">Placed Students</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {students.length > 0 ? (
-          students.map(student => (
+    <div className="student-cards p-4 bg-slate-800">
+      <h2 className="text-4xl font-bold mb-8 text-center border-b-4 border-white w-fit m-auto pt-6 text-white">Placed Students</h2>
+      
+      <div className="filters flex justify-center mb-8 space-x-4">
+        <div>
+          <label className="block text-white mb-2">Year</label>
+          <select className="p-2 rounded" value={yearFilter} onChange={e => setYearFilter(e.target.value)}>
+            <option value="">All</option>
+            {/* Add year options dynamically */}
+            {[...new Set(students.map(student => student.year))].map(year => (
+              <option key={year} value={year}>{year}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block text-white mb-2">Department</label>
+          <select className="p-2 rounded" value={departmentFilter} onChange={e => setDepartmentFilter(e.target.value)}>
+            <option value="">All</option>
+            {/* Add department options dynamically */}
+            {[...new Set(students.map(student => student.department))].map(dept => (
+              <option key={dept} value={dept}>{dept}</option>
+            ))}
+          </select>
+        </div>
+        {/* <div>
+          <label className="block text-white mb-2">Minimum Package (LPA)</label>
+          <input
+            type="number"
+            className="p-2 rounded"
+            value={packageFilter}
+            onChange={e => setPackageFilter(e.target.value)}
+            placeholder="Enter package"
+          />
+        </div> */}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 py-6 gap-6">
+        {filteredStudents.length > 0 ? (
+          filteredStudents.map(student => (
             <div key={student.id} className="bg-white rounded-lg shadow-lg p-6">
               <img
                 src={student.image}
                 alt={student.name}
-                className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                className="w-44 h-44 object-cover rounded-full mx-auto mb-4"
               />
               <h3 className="text-xl font-semibold mb-2 text-center">{student.name}</h3>
-              {/* <p className="text-gray-700 mb-2 text-center">Email: {student.email}</p> */}
               <p className="text-gray-700 mb-2 text-center">Company: {student.companyName}</p>
               <p className="text-gray-700 mb-2 text-center">Package: {student.package}</p>
+              <p className="text-gray-700 mb-2 text-center">Year: {student.year}</p>
+              <p className="text-gray-700 mb-2 text-center">Department: {student.department}</p>
             </div>
           ))
         ) : (
