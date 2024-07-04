@@ -194,12 +194,6 @@
 
 
 
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 531b35f36f351750d590322323320141ebd370c9
 import React, { useState, useEffect } from 'react';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
