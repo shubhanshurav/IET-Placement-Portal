@@ -180,7 +180,11 @@ function Dashboard({ data }) {
       {isSidebarVisible && <Sidebar param={"dashboard"} />}
 
       <div className="student_div_center w-[90%] m-auto">
+<<<<<<< HEAD
         {data?.length > 0 ? (
+=======
+        {data.length > 0 ? (
+>>>>>>> 531b35f36f351750d590322323320141ebd370c9
           <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
             {/* Toggle Button */}
             <button
