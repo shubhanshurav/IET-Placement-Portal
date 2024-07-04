@@ -1,5 +1,4 @@
 import Home from "./Pages/Home";
-import Forms from "./Pages/Forms";
 import Main from "./Pages/Main";
 import "./App.css";
 import { Routes, Route, Form } from "react-router-dom";
@@ -22,9 +21,10 @@ import Admin from "./components/Admin.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
 import { placedStudentDetails } from "./data/placedstudentData.js";
 import { internshipDetails } from "./data/internshipDetails";
-import StudentUploadDetails from "./Pages/StudentUploadDetails.jsx";
-import CertificatesUploadDetails from "./Pages/CertificatesUploadDetails.jsx";
+import StudentUploadDetails from "./Pages/PlacedStudent/StudentUploadDetails.jsx";
+import CertificatesUploadDetails from "./Pages/CertificateDetails/CertificatesUploadDetails.jsx";
 import Certificate from "./components/Certificate.jsx";
+import GateStudentUploadDetails from "./Pages/GateStudent/GateStudentUploadDetails.jsx";
 
 function App() {
 
@@ -100,6 +100,7 @@ function App() {
         <Route path="/companies" element={<Company data={studentsData} />} />
         <Route path="/uploadStudentsDetails" element={<StudentUploadDetails />} />
         <Route path="/uploadCertificateDetails" element={<CertificatesUploadDetails />} />
+        <Route path="/uploadGateStudentDetails" element={<GateStudentUploadDetails />} />
         <Route
           path="/hackathons"
           element={

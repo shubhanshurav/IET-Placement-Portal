@@ -285,6 +285,7 @@ const Admin = () => {
           </p>
           <p className="text text-white font-bold text-lg  cursor-pointer border-2 border-white p-2 rounded-md px-2" onClick={()=>{navigate('/uploadStudentsDetails');}}>Add Student</p>
           <p className="text text-white font-bold text-lg  cursor-pointer border-2 border-white p-2 rounded-md" onClick={()=>{navigate('/uploadCertificateDetails');}}>Add Certificates</p>
+          <p className="text text-white font-bold text-lg  cursor-pointer border-2 border-white p-2 rounded-md" onClick={()=>{navigate('/uploadGateStudentDetails');}}>Add Gate Students</p>
           <div>
             <Link
               to={"/dashboard"}

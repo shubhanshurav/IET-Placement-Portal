@@ -9,9 +9,8 @@ import "../Styles/InternshipLoader.css";
 import { Link, useNavigate } from "react-router-dom";
 import dummy from "../Assets/dummy.jpg";
 import toast, { Toaster } from "react-hot-toast";
-import { placedStudentDetails } from "../data/placedstudentData";
+// import { placedStudentDetails } from "../data/placedstudentData";
 import { ImMenu, ImCross } from "react-icons/im";
-
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, database } from "../firebaseConfig";
 import { get, set, ref } from "firebase/database";
@@ -28,13 +27,31 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Dashboard({ data }) {
   const [authUser, setAuthUser] = useState(null);
   const [username, setUsername] = useState("");
   const [maxpackages, setPackages] = useState(null);
-  const [placedData, setPlacedData] = useState(placedStudentDetails);
+  const [placedData, setPlacedData] = useState([]);
 
-  const [isSidebarVisible, setSidebarVisibility] = useState(true);
+
+  useEffect(() => {
+    fetch(BASE_URL + '/placed')
+      .then(response => response.json())
+      .then(data => {
+        // Assuming the structure is under responseDetails array
+        if (data && data.responseDetails) {
+          setPlacedData(data.responseDetails);
+          // console.log(data.responseDetails)
+        } else {
+          console.error('Invalid data structure from API');
+        }
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  const [isSidebarVisible, setSidebarVisibility] = useState(false);
 
   // Get the current date
   let currentDate = new Date();
@@ -60,26 +77,6 @@ function Dashboard({ data }) {
     };
   }, []);
 
-  // console.log("User:",authUser);
-  // const companiesList = [
-  //   {
-  //     "icon": 'https://www.ptc.com/dist/ptc/images/ptc-favicon-512x512-gray.png',
-  //     "name": "PTC"
-  //   },
-  //   {
-  //     "icon": "https://companieslogo.com/img/orig/WLN.PA-a6cf516b.png?t=1648300217",
-  //     "name": "WorldLine",
-  //   },
-  //   {
-  //     "icon": "https://i.ibb.co/WGrJpdw/juspay.png",
-  //     "name": "Juspay",
-  //   },
-  //   {
-  //     "icon": "https://asset.brandfetch.io/idzF9a2Y93/idASzAc-NY.png",
-  //     "name": "Cognizant",
-  //   },
-  // ];
-
   const [graphData, setGraphData] = useState({});
   const [stats, setStats] = useState([]);
 
@@ -90,11 +87,11 @@ function Dashboard({ data }) {
   let unique_data = new Set(jd_data);
   const jdData = Array.from(unique_data);
 
-  // console.log(unique_data);
+  console.log(unique_data);
 
   const SortStudents = () => {
     // sort data
-    data.sort((a, b) => {
+    data?.sort((a, b) => {
       if (a.Package > b.Package) {
         return -1;
       } else if (a.Package < b.Package) {
@@ -183,16 +180,7 @@ function Dashboard({ data }) {
       {isSidebarVisible && <Sidebar param={"dashboard"} />}
 
       <div className="student_div_center w-[90%] m-auto">
-        {/* <div className="dashboard_top">
-          <div className="search_bar_div">
-            <input className='search_bar' type='text' placeholder='Seach Companies, Internships, Hackathons, or Students...' />
-            <div className="search_icon_div">
-              <img src={search} alt="pic" className="search_icon" />
-            </div>
-          </div>
-        </div> */}
-
-        {data.length > 0 ? (
+        {data?.length > 0 ? (
           <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
             {/* Toggle Button */}
             <button
@@ -308,7 +296,7 @@ function Dashboard({ data }) {
 
                   } */}
 
-                  {jdData
+                  {/* {jdData
                     .filter((word) => word.length <= 20)
                     .map((item, index) => {
                       return (
@@ -328,7 +316,7 @@ function Dashboard({ data }) {
                           </div>
                         </>
                       );
-                    })}
+                    })} */}
                 </div>
               </div>
             </div>
@@ -338,9 +326,9 @@ function Dashboard({ data }) {
                 <div className="packages_div">
                   {
                     // data.slice(0, 5).map((item, index) => {
-                    placedData.slice(0, 5).map((item, index) => {
-                      const { Name, Package, Company, UID, ProfileLink, Year } =
-                        item;
+                    placedData.slice(0, 5)?.map((item, index) => {
+                      const { name, package: packageAmount, companyName, image, year} =  item;
+                      // console.log(item);
                       // const profileImg = ProfileLink.slice(33,);
 
                       return (
@@ -348,7 +336,7 @@ function Dashboard({ data }) {
                           key={index}
                           className="highest_package"
                           onClick={() => {
-                            navigate(`/students/${UID}`);
+                            navigate(`/students/${name}`);
                           }}
                         >
                           {/* {profileImg ?
@@ -357,24 +345,25 @@ function Dashboard({ data }) {
                             : <img src={dummy} alt="pic" className="card_img_dashboard spin circle" />} */}
 
                           <img
-                            src={ProfileLink}
+                            src={image}
                             className="card_img_dashboard spin circle"
                             alt="Not Found"
                           />
                           <h3 className="highest_packagetext1">
                             <span className="text-animation">
-                              {Name.split(" ")[0] +
+                              {name.split(" ")[0] +
                                 " " +
-                                Name.split(" ")[Name.split(" ").length - 1]}
+                                name.split(" ")[name.split(" ").length - 1]}
                             </span>
                             <span className="highest_packagetext2">
-                              {Company}
+                              {companyName}
                             </span>
                           </h3>
                           <h3 className="highest_packagetext2 highest_packagetext3">
-                            {Package} LPA{" "}
-                            <span className="year_dashboard">{Year} Batch</span>{" "}
-                          </h3>
+                            {packageAmount} LPA{" "}
+                            <span className="year_dashboard">{year} Batch</span>{" "}
+                            </h3>
+                            {/* <span className="year_dashboard">{year} Batch</span>{" "} */}
                         </div>
                       );
                     })
