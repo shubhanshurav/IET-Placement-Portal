@@ -25,6 +25,8 @@ import StudentUploadDetails from "./Pages/PlacedStudent/StudentUploadDetails.jsx
 import CertificatesUploadDetails from "./Pages/CertificateDetails/CertificatesUploadDetails.jsx";
 import Certificate from "./components/Certificate.jsx";
 import GateStudentUploadDetails from "./Pages/GateStudent/GateStudentUploadDetails.jsx";
+import GateStudent from "./components/GateStudent.jsx";
+import InternshipUploadDetails from "./Pages/Internship/InternshipUploadDetails.jsx";
 
 function App() {
 
@@ -97,10 +99,12 @@ function App() {
         <Route path="/dashboard" element={<Dashboard data={studentsData} />} />
         <Route path="/students" element={<Student data={studentsData} />} />
         <Route path="/certificates" element={<Certificate  />} />
+        <Route path="/gate" element={<GateStudent />} />
         <Route path="/companies" element={<Company data={studentsData} />} />
         <Route path="/uploadStudentsDetails" element={<StudentUploadDetails />} />
         <Route path="/uploadCertificateDetails" element={<CertificatesUploadDetails />} />
         <Route path="/uploadGateStudentDetails" element={<GateStudentUploadDetails />} />
+        <Route path="/uploadInternshipDetails" element={<InternshipUploadDetails />} />
         <Route
           path="/hackathons"
           element={
@@ -113,14 +117,8 @@ function App() {
         />
         <Route path="/resetpassword" element={<ForgotPassword />} />
         <Route
-          path="/internships"
-          element={
-            <Internship
-              internshipData={internship}
-              loading={loading}
-              setLoading={setLoading}
-            />
-          }
+          path="/internship"
+          element={<Internship loading={loading} setLoading={setLoading} />}
         />
         <Route path="/students/:ID" element={<Profile data={studentsData} />} />
         <Route path="*" element={<Home />} />

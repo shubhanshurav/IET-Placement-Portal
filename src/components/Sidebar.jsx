@@ -39,9 +39,9 @@ const Sidebar = ({param}) => {
                 <li className={param === 'students'?'active sidebar_li':'sidebar_li'} id='2' onClick={()=>{navigate('/students');}}><img src={student} className='icon_img'/>Students</li>
                 <li className={param === 'companies'?'active sidebar_li':'sidebar_li'} id='3' onClick={()=>{navigate('/companies');}}><img src={company} className='icon_img'/>Companies</li>
                 <li className={param === 'hackathons'?'active sidebar_li':'sidebar_li'} id='4' onClick={()=>{navigate('/hackathons');}}><img src={hackathon} className='icon_img'/>Hackathons</li>
-                <li className={param === 'internships'?'active sidebar_li':'sidebar_li'} id='5' onClick={()=>{navigate('/internships');}}><img src={internship} className='icon_img'/>Internships</li>
-                <li className={param === 'internships'?'active sidebar_li':'sidebar_li'} id='5' onClick={()=>{navigate('/certificates');}}>📑Certificates</li>
-                <li className={param === 'internships'?'active sidebar_li':'sidebar_li'} id='5' onClick={()=>{navigate('/gate');}}>Gate Students</li>
+                <li className={param === 'internship'?'active sidebar_li':'sidebar_li'} id='5' onClick={()=>{navigate('/internship');}}><img src={internship} className='icon_img'/>Internships</li>
+                <li className={param === 'certificates'?'active sidebar_li':'sidebar_li'} id='6' onClick={()=>{navigate('/certificates');}}>📑Certificates</li>
+                <li className={param === 'gate'?'active sidebar_li':'sidebar_li'} id='7' onClick={()=>{navigate('/gate');}}>Gate Students</li>
             </ul>
         </div>
         <div className='logout_div'>

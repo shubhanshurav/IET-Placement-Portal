@@ -1,5 +1,5 @@
 import React from 'react';
-import InternshipStudentForm from './internshipStudentForm';
+import InternshipStudentForm from './InternshipStudentForm';
 
 function InternshipUploadDetails() {
   return (

@@ -87,7 +87,7 @@ function Dashboard({ data }) {
   let unique_data = new Set(jd_data);
   const jdData = Array.from(unique_data);
 
-  console.log(unique_data);
+  // console.log(unique_data);
 
   const SortStudents = () => {
     // sort data

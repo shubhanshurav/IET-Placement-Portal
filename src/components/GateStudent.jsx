@@ -35,7 +35,7 @@ function GateStudent() {
               />
               <h3 className="text-xl font-semibold mb-2 text-center">{gateStudents.name}</h3>
               <p className="text-gray-700 mb-2 text-center">Year: {gateStudents.year}</p>
-              <p className="text-gray-700 mb-2 text-center">Department: {gateStudents.deparment}</p>
+              <p className="text-gray-700 mb-2 text-center">Department: {gateStudents.department}</p>
               <p className="text-gray-700 mb-2 text-center">Rank: {gateStudents.rank}</p>
               <p className="text-gray-700 mb-2 text-center">Score: {gateStudents.score}</p>
             </div>

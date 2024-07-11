@@ -45,7 +45,7 @@ const CertificationForm = () => {
 
   return (
     <div className="mx-auto p-4 bg-gray-100 rounded-lg shadow-md md:w-[60%] w-fit ">
-      <h1 className="text-xl md:text-3xl font-bold text-black border-b-4 border-black w-fit m-auto mb-4">Student Placement Form</h1>
+      <h1 className="text-xl md:text-3xl font-bold text-black border-b-4 border-black w-fit m-auto mb-4">Add Student Cerificate Form</h1>
       <form onSubmit={onSubmit} className=''>
         <div className="mb-4">
           <label className="block text-gray-700">Name</label>
