@@ -80,24 +80,24 @@ function Certificate() {
   };
 
   return (
-    <div className="student-cards p-4">
+    <div className="student-cards p-4 bg-slate-950">
       <ToastContainer />
-      <h2 className="text-3xl font-bold mb-8 text-center">
+      <h2 className="text-3xl text-white border-b-4 w-fit m-auto pb-2 border-white font-bold mb-8 text-center">
         Students Certificates
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid pt-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {certificates.length > 0 ? (
           certificates.map((certificate) => (
-            <div key={certificate._id} className="bg-white shadow-lg p-6">
+            <div key={certificate._id} className="bg-gray-100 rounded-lg shadow-lg py-6">
               <img
                 src={certificate.image}
                 alt={certificate.name}
-                className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                className="w-60 h-40 object-cover rounded-sm mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2 text-center">
+              <h3 className="text-xl  font-semibold mb-2 text-center">
                 {certificate.name}
               </h3>
-              <p className="text-gray-700 mb-2 text-center">
+              <p className=" mb-2 text-center">
                 Certificate Name: {certificate.certificateName}
               </p>
               <div className="text-center">
