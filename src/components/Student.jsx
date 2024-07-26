@@ -193,8 +193,10 @@
 
 
 
-
 import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function StudentCards() {
@@ -202,9 +204,17 @@ function StudentCards() {
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [yearFilter, setYearFilter] = useState('');
   const [departmentFilter, setDepartmentFilter] = useState('');
-  // const [packageFilter, setPackageFilter] = useState('');
+  const [editStudent, setEditStudent] = useState(null);
 
   useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  useEffect(() => {
+    filterStudents();
+  }, [yearFilter, departmentFilter]);
+
+  const fetchStudents = () => {
     fetch(BASE_URL + '/placed')
       .then(response => response.json())
       .then(data => {
@@ -216,12 +226,7 @@ function StudentCards() {
         }
       })
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
-
-  useEffect(() => {
-    filterStudents();
-  }, [yearFilter, departmentFilter]);
-  // }, [yearFilter, departmentFilter, packageFilter]);
+  };
 
   const filterStudents = () => {
     let filtered = students;
@@ -234,23 +239,67 @@ function StudentCards() {
       filtered = filtered.filter(student => student.department === departmentFilter);
     }
 
-    // if (packageFilter) {
-    //   filtered = filtered.filter(student => parseFloat(student.package) >= parseFloat(packageFilter));
-    // }
-
     setFilteredStudents(filtered);
+  };
+
+  const handleEdit = (student) => {
+    setEditStudent(student);
+  };
+
+  const handleDelete = (studentId) => {
+    // console.log("STU_IDDDD", studentId)
+
+    fetch(`${BASE_URL}/placed/${studentId}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          setStudents(students.filter(student => student.id !== studentId));
+          setFilteredStudents(filteredStudents.filter(student => student.id !== studentId));
+          toast.success('Student deleted successfully');
+        } else {
+          toast.error('Failed to delete student');
+        }
+      })
+      .catch(error => {
+        console.error('Error deleting student:', error);
+        toast.error('Failed to delete student');
+      });
+  };
+
+  const handleSaveEdit = () => {
+    fetch(`${BASE_URL}/placed/${editStudent._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(editStudent),
+    })
+      .then(response => {
+        if (response.ok) {
+          fetchStudents();
+          setEditStudent(null);
+          toast.success('Student updated successfully');
+        } else {
+          toast.error('Failed to update student');
+        }
+      })
+      .catch(error => {
+        console.error('Error updating student:', error);
+        toast.error('Failed to update student');
+      });
   };
 
   return (
     <div className="student-cards p-4 bg-slate-800">
       <h2 className="text-4xl font-bold mb-8 text-center border-b-4 border-white w-fit m-auto pt-6 text-white">Placed Students</h2>
-      
+      <ToastContainer />
+
       <div className="filters flex justify-center mb-8 space-x-4">
         <div>
           <label className="block text-white mb-2">Year</label>
           <select className="p-2 rounded" value={yearFilter} onChange={e => setYearFilter(e.target.value)}>
             <option value="">All</option>
-            {/* Add year options dynamically */}
             {[...new Set(students.map(student => student.year))].map(year => (
               <option key={year} value={year}>{year}</option>
             ))}
@@ -260,22 +309,11 @@ function StudentCards() {
           <label className="block text-white mb-2">Department</label>
           <select className="p-2 rounded" value={departmentFilter} onChange={e => setDepartmentFilter(e.target.value)}>
             <option value="">All</option>
-            {/* Add department options dynamically */}
             {[...new Set(students.map(student => student.department))].map(dept => (
               <option key={dept} value={dept}>{dept}</option>
             ))}
           </select>
         </div>
-        {/* <div>
-          <label className="block text-white mb-2">Minimum Package (LPA)</label>
-          <input
-            type="number"
-            className="p-2 rounded"
-            value={packageFilter}
-            onChange={e => setPackageFilter(e.target.value)}
-            placeholder="Enter package"
-          />
-        </div> */}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 py-6 gap-6">
@@ -292,12 +330,83 @@ function StudentCards() {
               <p className="text-gray-700 mb-2 text-center">Package: {student.package}</p>
               <p className="text-gray-700 mb-2 text-center">Year: {student.year}</p>
               <p className="text-gray-700 mb-2 text-center">Department: {student.department}</p>
+              <div className="flex justify-center space-x-4 mt-4">
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                  onClick={() => handleEdit(student)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded"
+                  onClick={() => handleDelete(student._id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))
         ) : (
           <p className="text-center col-span-full">No students found</p>
         )}
       </div>
+
+      {editStudent && (
+        <div className="edit-modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold mb-4">Edit Student</h3>
+            <label className="block mb-2">Name</label>
+            <input
+              type="text"
+              className="p-2 rounded mb-4 w-full"
+              value={editStudent.name}
+              onChange={e => setEditStudent({ ...editStudent, name: e.target.value })}
+            />
+            <label className="block mb-2">Company</label>
+            <input
+              type="text"
+              className="p-2 rounded mb-4 w-full"
+              value={editStudent.companyName}
+              onChange={e => setEditStudent({ ...editStudent, companyName: e.target.value })}
+            />
+            <label className="block mb-2">Package</label>
+            <input
+              type="text"
+              className="p-2 rounded mb-4 w-full"
+              value={editStudent.package}
+              onChange={e => setEditStudent({ ...editStudent, package: e.target.value })}
+            />
+            <label className="block mb-2">Year</label>
+            <input
+              type="text"
+              className="p-2 rounded mb-4 w-full"
+              value={editStudent.year}
+              onChange={e => setEditStudent({ ...editStudent, year: e.target.value })}
+            />
+            <label className="block mb-2">Department</label>
+            <input
+              type="text"
+              className="p-2 rounded mb-4 w-full"
+              value={editStudent.department}
+              onChange={e => setEditStudent({ ...editStudent, department: e.target.value })}
+            />
+            <div className="flex justify-end space-x-4">
+              <button
+                className="bg-gray-500 text-white px-4 py-2 rounded"
+                onClick={() => setEditStudent(null)}
+              >
+                Cancel
+              </button>
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded"
+                onClick={handleSaveEdit}
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
