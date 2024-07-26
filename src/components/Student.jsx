@@ -11,7 +11,6 @@
 // import {placedStudentDetails} from '../data/placedstudentData';
 // import { ImMenu, ImCross } from "react-icons/im";
 
-
 // const Student = ({ data }) => {
 //   const location = useLocation();
 //   const [placedData, setPlacedData] = useState(placedStudentDetails);
@@ -95,7 +94,7 @@
 //       });
 //     });
 //   }
- 
+
 //   return (
 //     <div className='student_div'>
 //       {isSidebarVisible && <Sidebar param={'students'} />}
@@ -106,7 +105,7 @@
 //             onClick={toggleSidebar}>
 //                 {isSidebarVisible ? <ImCross /> : <ImMenu />}
 //             </button>
-//         </div> 
+//         </div>
 //         <div className="dashboard_top student_searchbar ">
 //           <div className="search_bar_div ">
 //             <input className='search_bar' onChange={(e) => setQ(e.target.value)} value={q} type='text' placeholder='Seach Companies, Students, or Skills ...' />
@@ -188,55 +187,55 @@
 
 // export default Student
 
-
-
-
-
-
-import React, { useState, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function StudentCards() {
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
-  const [yearFilter, setYearFilter] = useState('');
-  const [departmentFilter, setDepartmentFilter] = useState('');
+  const [yearFilter, setYearFilter] = useState("");
+  const [departmentFilter, setDepartmentFilter] = useState("");
   const [editStudent, setEditStudent] = useState(null);
+
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [studentToDelete, setStudentToDelete] = useState(null);
 
   useEffect(() => {
     fetchStudents();
-  }, []);
+  }, [studentToDelete]);
 
   useEffect(() => {
     filterStudents();
-  }, [yearFilter, departmentFilter]);
+  }, [yearFilter, departmentFilter,studentToDelete]);
 
   const fetchStudents = () => {
-    fetch(BASE_URL + '/placed')
-      .then(response => response.json())
-      .then(data => {
+    fetch(BASE_URL + "/placed")
+      .then((response) => response.json())
+      .then((data) => {
         if (data && data.responseDetails) {
           setStudents(data.responseDetails);
           setFilteredStudents(data.responseDetails);
         } else {
-          console.error('Invalid data structure from API');
+          console.error("Invalid data structure from API");
         }
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch((error) => console.error("Error fetching data:", error));
   };
 
   const filterStudents = () => {
     let filtered = students;
 
     if (yearFilter) {
-      filtered = filtered.filter(student => student.year === yearFilter);
+      filtered = filtered.filter((student) => student.year === yearFilter);
     }
 
     if (departmentFilter) {
-      filtered = filtered.filter(student => student.department === departmentFilter);
+      filtered = filtered.filter(
+        (student) => student.department === departmentFilter
+      );
     }
 
     setFilteredStudents(filtered);
@@ -246,90 +245,134 @@ function StudentCards() {
     setEditStudent(student);
   };
 
-  const handleDelete = (studentId) => {
-    // console.log("STU_IDDDD", studentId)
+  const confirmDelete = (studentId) => {
+    setStudentToDelete(studentId);
+    setShowDeleteConfirm(true);
+  };
 
-    fetch(`${BASE_URL}/placed/${studentId}`, {
-      method: 'DELETE',
+  const cancelDelete = () => {
+    setShowDeleteConfirm(false);
+    setStudentToDelete(null);
+  };
+
+  const handleConfirmDelete = () => {
+    fetch(`${BASE_URL}/placed/${studentToDelete}`, {
+      method: "DELETE",
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
-          setStudents(students.filter(student => student.id !== studentId));
-          setFilteredStudents(filteredStudents.filter(student => student.id !== studentId));
-          toast.success('Student deleted successfully');
+          setStudents(
+            students.filter((student) => student.id !== studentToDelete)
+          );
+          setFilteredStudents(
+            filteredStudents.filter((student) => student.id !== studentToDelete)
+          );
+          toast.success("Student deleted successfully");
         } else {
-          toast.error('Failed to delete student');
+          toast.error("Failed to delete student");
         }
       })
-      .catch(error => {
-        console.error('Error deleting student:', error);
-        toast.error('Failed to delete student');
+      .catch((error) => {
+        console.error("Error deleting student:", error);
+        toast.error("Failed to delete student");
+      })
+      .finally(() => {
+        setShowDeleteConfirm(false);
+        setStudentToDelete(null);
       });
   };
 
   const handleSaveEdit = () => {
     fetch(`${BASE_URL}/placed/${editStudent._id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(editStudent),
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           fetchStudents();
           setEditStudent(null);
-          toast.success('Student updated successfully');
+          toast.success("Student updated successfully");
         } else {
-          toast.error('Failed to update student');
+          toast.error("Failed to update student");
         }
       })
-      .catch(error => {
-        console.error('Error updating student:', error);
-        toast.error('Failed to update student');
+      .catch((error) => {
+        console.error("Error updating student:", error);
+        toast.error("Failed to update student");
       });
   };
 
   return (
     <div className="student-cards p-4 bg-slate-800">
-      <h2 className="text-4xl font-bold mb-8 text-center border-b-4 border-white w-fit m-auto pt-6 text-white">Placed Students</h2>
+      <h2 className="text-4xl font-bold mb-8 text-center border-b-4 border-white w-fit m-auto pt-6 text-white">
+        Placed Students
+      </h2>
       <ToastContainer />
 
       <div className="filters flex justify-center mb-8 space-x-4">
         <div>
           <label className="block text-white mb-2">Year</label>
-          <select className="p-2 rounded" value={yearFilter} onChange={e => setYearFilter(e.target.value)}>
+          <select
+            className="p-2 rounded"
+            value={yearFilter}
+            onChange={(e) => setYearFilter(e.target.value)}
+          >
             <option value="">All</option>
-            {[...new Set(students.map(student => student.year))].map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
+            {[...new Set(students.map((student) => student.year))].map(
+              (year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              )
+            )}
           </select>
         </div>
         <div>
           <label className="block text-white mb-2">Department</label>
-          <select className="p-2 rounded" value={departmentFilter} onChange={e => setDepartmentFilter(e.target.value)}>
+          <select
+            className="p-2 rounded"
+            value={departmentFilter}
+            onChange={(e) => setDepartmentFilter(e.target.value)}
+          >
             <option value="">All</option>
-            {[...new Set(students.map(student => student.department))].map(dept => (
-              <option key={dept} value={dept}>{dept}</option>
-            ))}
+            {[...new Set(students.map((student) => student.department))].map(
+              (dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              )
+            )}
           </select>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 py-6 gap-6">
         {filteredStudents.length > 0 ? (
-          filteredStudents.map(student => (
+          filteredStudents.map((student) => (
             <div key={student.id} className="bg-white rounded-lg shadow-lg p-6">
               <img
                 src={student.image}
                 alt={student.name}
                 className="w-44 h-44 object-cover rounded-full mx-auto mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2 text-center">{student.name}</h3>
-              <p className="text-gray-700 mb-2 text-center">Company: {student.companyName}</p>
-              <p className="text-gray-700 mb-2 text-center">Package: {student.package}</p>
-              <p className="text-gray-700 mb-2 text-center">Year: {student.year}</p>
-              <p className="text-gray-700 mb-2 text-center">Department: {student.department}</p>
+              <h3 className="text-xl font-semibold mb-2 text-center">
+                {student.name}
+              </h3>
+              <p className="text-gray-700 mb-2 text-center">
+                Company: {student.companyName}
+              </p>
+              <p className="text-gray-700 mb-2 text-center">
+                Package: {student.package}
+              </p>
+              <p className="text-gray-700 mb-2 text-center">
+                Year: {student.year}
+              </p>
+              <p className="text-gray-700 mb-2 text-center">
+                Department: {student.department}
+              </p>
               <div className="flex justify-center space-x-4 mt-4">
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -339,7 +382,7 @@ function StudentCards() {
                 </button>
                 <button
                   className="bg-red-500 text-white px-4 py-2 rounded"
-                  onClick={() => handleDelete(student._id)}
+                  onClick={() => confirmDelete(student._id)}
                 >
                   Delete
                 </button>
@@ -351,6 +394,32 @@ function StudentCards() {
         )}
       </div>
 
+
+      {/* Model UI for deletion confirmation */}
+      {showDeleteConfirm && (
+        <div className="delete-modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold mb-4">
+              Are you sure you want to delete?
+            </h3>
+            <div className="flex justify-end space-x-4">
+              <button
+                className="bg-gray-500 text-white px-4 py-2 rounded"
+                onClick={cancelDelete}
+              >
+                Cancel
+              </button>
+              <button
+                className="bg-red-500 text-white px-4 py-2 rounded"
+                onClick={handleConfirmDelete}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {editStudent && (
         <div className="edit-modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -360,35 +429,45 @@ function StudentCards() {
               type="text"
               className="p-2 rounded mb-4 w-full"
               value={editStudent.name}
-              onChange={e => setEditStudent({ ...editStudent, name: e.target.value })}
+              onChange={(e) =>
+                setEditStudent({ ...editStudent, name: e.target.value })
+              }
             />
             <label className="block mb-2">Company</label>
             <input
               type="text"
               className="p-2 rounded mb-4 w-full"
               value={editStudent.companyName}
-              onChange={e => setEditStudent({ ...editStudent, companyName: e.target.value })}
+              onChange={(e) =>
+                setEditStudent({ ...editStudent, companyName: e.target.value })
+              }
             />
             <label className="block mb-2">Package</label>
             <input
               type="text"
               className="p-2 rounded mb-4 w-full"
               value={editStudent.package}
-              onChange={e => setEditStudent({ ...editStudent, package: e.target.value })}
+              onChange={(e) =>
+                setEditStudent({ ...editStudent, package: e.target.value })
+              }
             />
             <label className="block mb-2">Year</label>
             <input
               type="text"
               className="p-2 rounded mb-4 w-full"
               value={editStudent.year}
-              onChange={e => setEditStudent({ ...editStudent, year: e.target.value })}
+              onChange={(e) =>
+                setEditStudent({ ...editStudent, year: e.target.value })
+              }
             />
             <label className="block mb-2">Department</label>
             <input
               type="text"
               className="p-2 rounded mb-4 w-full"
               value={editStudent.department}
-              onChange={e => setEditStudent({ ...editStudent, department: e.target.value })}
+              onChange={(e) =>
+                setEditStudent({ ...editStudent, department: e.target.value })
+              }
             />
             <div className="flex justify-end space-x-4">
               <button
