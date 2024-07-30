@@ -22,7 +22,7 @@ import ForgotPassword from "./components/ForgotPassword.jsx";
 import { placedStudentDetails } from "./data/placedstudentData.js";
 import { internshipDetails } from "./data/internshipDetails";
 import StudentUploadDetails from "./Pages/PlacedStudent/StudentUploadDetails.jsx";
-import InternshipUploadDetails from "./Pages/Internship/InternshipUploadDetails";
+import InternshipUploadDetails from "./Pages/Internship/InternshipUploadDetails.jsx";
 import CertificatesUploadDetails from "./Pages/CertificateDetails/CertificatesUploadDetails.jsx";
 import GateStudentUploadDetails from "./Pages/GateStudent/GateStudentUploadDetails.jsx";
 import Certificate from "./components/Certificate.jsx";
