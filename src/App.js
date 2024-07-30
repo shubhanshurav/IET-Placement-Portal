@@ -22,7 +22,7 @@ import ForgotPassword from "./components/ForgotPassword.jsx";
 import { placedStudentDetails } from "./data/placedstudentData.js";
 import { internshipDetails } from "./data/internshipDetails";
 import StudentUploadDetails from "./Pages/PlacedStudent/StudentUploadDetails.jsx";
-import InternshipUploadDetails from "./Pages/Internship/InternshipUploadDetails.jsx";
+// import InternshipUploadDetails from "./Pages/Internship/InternshipUploadDetails.jsx";
 import CertificatesUploadDetails from "./Pages/CertificateDetails/CertificatesUploadDetails.jsx";
 import GateStudentUploadDetails from "./Pages/GateStudent/GateStudentUploadDetails.jsx";
 import Certificate from "./components/Certificate.jsx";
@@ -104,7 +104,7 @@ function App() {
         <Route path="/uploadStudentsDetails" element={<StudentUploadDetails />} />
         <Route path="/uploadCertificateDetails" element={<CertificatesUploadDetails />} />
         <Route path="/uploadGateStudentDetails" element={<GateStudentUploadDetails />} />
-        <Route path="/uploadInternshipDetails" element={<InternshipUploadDetails />} />
+        {/* <Route path="/uploadInternshipDetails" element={<InternshipUploadDetails />} /> */}
         <Route
           path="/hackathons"
           element={

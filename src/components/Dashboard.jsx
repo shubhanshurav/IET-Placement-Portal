@@ -360,7 +360,7 @@ function Dashboard({ data }) {
                             </span>
                           </h3>
                           <h3 className="highest_packagetext2 highest_packagetext3">
-                            {packageAmount} LPA{" "}
+                            {packageAmount} {" "}
                             <span className="year_dashboard">{year} Batch</span>{" "}
                             </h3>
                             {/* <span className="year_dashboard">{year} Batch</span>{" "} */}
