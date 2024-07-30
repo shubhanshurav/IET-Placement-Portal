@@ -42,7 +42,7 @@ function App() {
     const dataRef = push(ref(database, "Analytics"));
     set(dataRef, {
       total_students: 100,
-      total_companies: 50,
+      total_companies: 50, 
       placd_students: 10,
     })
       .then(() => {
