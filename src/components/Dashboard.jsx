@@ -350,7 +350,7 @@ function Dashboard({ data }) {
                             alt="Not Found"
                           />
                           <h3 className="highest_packagetext1">
-                            <span className="text-animation">
+                            <span className="text-animation py-4">
                               {name.split(" ")[0] +
                                 " " +
                                 name.split(" ")[name.split(" ").length - 1]}
