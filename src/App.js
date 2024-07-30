@@ -24,7 +24,7 @@ import { internshipDetails } from "./data/internshipDetails";
 import StudentUploadDetails from "./Pages/PlacedStudent/StudentUploadDetails.jsx";
 import CertificatesUploadDetails from "./Pages/CertificateDetails/CertificatesUploadDetails.jsx";
 import GateStudentUploadDetails from "./Pages/GateStudent/GateStudentUploadDetails.jsx";
-import InternshipUploadDetails from "./Pages/Internship/InternshipUploadDetails.jsx";
+// import InternshipUploadDetails from "./Pages/Internship/InternshipUploadDetails.jsx";
 import Certificate from "./components/Certificate.jsx";
 import GateStudent from "./components/GateStudent.jsx";
 
@@ -104,7 +104,7 @@ function App() {
         <Route path="/uploadStudentsDetails" element={<StudentUploadDetails />} />
         <Route path="/uploadCertificateDetails" element={<CertificatesUploadDetails />} />
         <Route path="/uploadGateStudentDetails" element={<GateStudentUploadDetails />} />
-        <Route path="/uploadInternshipDetails" element={<InternshipUploadDetails />} />
+        {/* <Route path="/uploadInternshipDetails" element={<InternshipUploadDetails />} /> */}
         <Route
           path="/hackathons"
           element={
