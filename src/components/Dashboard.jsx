@@ -3,17 +3,18 @@ import "../Styles/Common.css";
 import "../Styles/Dashboard.css";
 import Sidebar from "../components/Sidebar";
 import user from "../Assets/user_profile.png";
-import search from "../Assets/search.png";
+// import search from "../Assets/search.png";
 import InternshipLoader from "./InternshipLoader";
 import "../Styles/InternshipLoader.css";
 import { Link, useNavigate } from "react-router-dom";
-import dummy from "../Assets/dummy.jpg";
+// import dummy from "../Assets/dummy.jpg";
 import toast, { Toaster } from "react-hot-toast";
 // import { placedStudentDetails } from "../data/placedstudentData";
 import { ImMenu, ImCross } from "react-icons/im";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, database } from "../firebaseConfig";
 import { get, set, ref } from "firebase/database";
+import { companiesList } from "../data/companyList";
 
 import {
   BarChart,
@@ -26,6 +27,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import Navbar from "./Navbar";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -35,20 +37,19 @@ function Dashboard({ data }) {
   const [maxpackages, setPackages] = useState(null);
   const [placedData, setPlacedData] = useState([]);
 
-
   useEffect(() => {
-    fetch(BASE_URL + '/placed')
-      .then(response => response.json())
-      .then(data => {
+    fetch(BASE_URL + "/placed")
+      .then((response) => response.json())
+      .then((data) => {
         // Assuming the structure is under responseDetails array
         if (data && data.responseDetails) {
           setPlacedData(data.responseDetails);
           // console.log(data.responseDetails)
         } else {
-          console.error('Invalid data structure from API');
+          console.error("Invalid data structure from API");
         }
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   const [isSidebarVisible, setSidebarVisibility] = useState(false);
@@ -174,129 +175,152 @@ function Dashboard({ data }) {
     );
   };
   return (
-    <div className="student_div">
-      <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
+    <>
+      <div className="bg-[#000000] z-10 flex flex-row">
+        <div className="flex">
+          {/* Toggle Button */}
+          <button
+            className="z-10 pt-2 px-4 bg-[#000000] text-white text-2xl bg-richblack-800"
+            onClick={toggleSidebar}
+          >
+            {isSidebarVisible ? <ImCross /> : <ImMenu />}
+          </button>
+        </div>
 
-      {isSidebarVisible && <Sidebar param={"dashboard"} />}
+        <div className="">
+           <Navbar ShowBtn={true} />
+        </div>
+      </div>
+      <div className="student_div">
+        <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
 
-      <div className="student_div_center w-[90%] m-auto">
-        {data?.length > 0 ? (
-          <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
-            {/* Toggle Button */}
-            <button
-              className="z-10 ml-[-1rem] md:mr-[45rem] pt-2 text-white text-2xl bg-richblack-800 rounded"
-              onClick={toggleSidebar}
-            >
-              {isSidebarVisible ? <ImCross /> : <ImMenu />}
-            </button>
-            <div className="dashboard_heading m-auto">
-              <h2 className="dashboard_headingtext text-[1.7rem] md:text-[2rem] md:w-[100%] w-[60%] text-[#fff]">
-                Welcome To Dashboard{" "}
-                <span className="text font-normal text-2xl md:text-3xl">
-                  {currentYear}
-                </span>
-              </h2>
-              {authUser ? (
-                <button
-                  className="admin_profile"
-                  onClick={() => {
-                    navigate("/admin");
-                  }}
-                >
-                  <p className="admin_div">
-                    <span className="admin_email text-sm text-[#f8b217] font-bold">
-                      {username.slice(0, username.indexOf("@"))}
-                    </span>
-                    <Link to={"/admin"} className="admin_role">
-                      Go to Dashboard
-                    </Link>
-                  </p>
-                  <img src={user} className="admin_img" alt="admin_img" />
-                </button>
-              ) : (
-                <button
-                  className="w-fit flex justify-content-center items-center text-lg font-bold bg-blue-800 rounded-full px-2 md:px-3 py-1 hover:bg-blue-600"
-                  onClick={() => {
-                    navigate("/login");
-                  }}
-                >
-                  <img src={user} alt="loginimg" className="admin_img" />
-                  Login
-                </button>
-              )}
-              {/* <button className="admin"><img src={user} className="user_img"/> Login</button> */}
-            </div>
-            <div className="flex_container1 flex flex-wrap">
-              <div className="flex_item1 flex flex-col gap-3 md:gap-0 w-full md:w-[55%] h-fit md:h-[100%]">
-                <div className="flex_item1-1 gap-2 flex w-full md:w-[90%] h-fit md:h-[100%] md:gap-0">
-                  <div className="flex_item w-full md:w-[48%]">
-                    <h3 className="dashboard_text">Total Students</h3>
-                    <h2
-                      id="total_student"
-                      className="text-[1.5rem] md:text-[2rem]"
-                    >
-                      {stats.totalStudents}
-                    </h2>
-                  </div>
-                  <div className="flex_item w-full md:w-[48%]">
-                    <h3 className="dashboard_text">Placed Students</h3>
-                    <h2
-                      id="placed_student"
-                      className="text-[1.5rem] md:text-[2rem]"
-                    >
-                      {stats.placedStudents}
-                    </h2>
-                  </div>
-                </div>
-                <div className="flex_item1-2 gap-2 flex w-full md:w-[90%] h-fit md:h-[100%] md:gap-0">
-                  <div className="flex_item w-full md:w-[48%]">
-                    <h3 className="dashboard_text">Total Companies</h3>
-                    <h2
-                      id="total_company"
-                      className="text-[1.5rem] md:text-[2rem]"
-                    >
-                      {stats.totalCompanies}
-                    </h2>
-                  </div>
-                  <div className="flex_item w-full md:w-[48%]">
-                    <h3 className="dashboard_text">Average Package</h3>
-                    <h2
-                      id="avg_salary"
-                      className="text-[1.5rem] md:text-[2rem]"
-                    >
-                      {stats.averagePackage} LPA
-                    </h2>
-                  </div>
-                </div>
+        {isSidebarVisible && <Sidebar param={"dashboard"}/>}
+
+        <div className="student_div_center w-[90%] m-auto">
+          {data?.length > 0 ? (
+            <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
+              <div className="dashboard_heading m-auto">
+                <h2 className="dashboard_headingtext text-[1.7rem] md:text-[2rem] md:w-[100%] w-[60%] text-[#fff]">
+                  Welcome To Dashboard{" "}
+                  <span className="text font-normal text-2xl md:text-3xl">
+                    {currentYear}
+                  </span>
+                </h2>
+                {authUser ? (
+                  <button
+                    className="admin_profile"
+                    onClick={() => {
+                      navigate("/admin");
+                    }}
+                  >
+                    <p className="admin_div">
+                      <span className="admin_email text-sm text-[#f8b217] font-bold">
+                        {username.slice(0, username.indexOf("@"))}
+                      </span>
+                      <Link to={"/admin"} className="admin_role">
+                        Go to Dashboard
+                      </Link>
+                    </p>
+                    <img src={user} className="admin_img" alt="admin_img" />
+                  </button>
+                ) : (
+                  <button
+                    className="w-fit flex justify-content-center items-center text-lg font-bold bg-blue-800 rounded-full px-2 md:px-3 py-1 hover:bg-blue-600"
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  >
+                    <img src={user} alt="loginimg" className="admin_img" />
+                    Login
+                  </button>
+                )}
+                {/* <button className="admin"><img src={user} className="user_img"/> Login</button> */}
               </div>
-              <div className="flex_item2 flex flex-col gap-3 md:gap-0 w-full md:w-[45%] h-fit md:h-[100%] mt-[12px] md:mt-0">
-                <h3 className="dashboard_text">Job Profiles</h3>
-                {/* {
-                  data.slice(0, 3).map((item, index) => {
-                    const { Name, Package, Company, UID } = item;
+              <div className="flex_container1 flex flex-wrap">
+                <div className="flex_item1 flex flex-col gap-3 md:gap-0 w-full md:w-[55%] h-fit md:h-[100%]">
+                  <div className="flex_item1-1 gap-2 flex w-full md:w-[90%] h-fit md:h-[100%] md:gap-0">
+                    <div className="flex_item w-full md:w-[48%]">
+                      <h3 className="dashboard_text">Total Students</h3>
+                      <h2
+                        id="total_student"
+                        className="text-[1.5rem] md:text-[2rem]"
+                      >
+                        {stats.totalStudents}
+                      </h2>
+                    </div>
+                    <div className="flex_item w-full md:w-[48%]">
+                      <h3 className="dashboard_text">Placed Students</h3>
+                      <h2
+                        id="placed_student"
+                        className="text-[1.5rem] md:text-[2rem]"
+                      >
+                        {stats.placedStudents}
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="flex_item1-2 gap-2 flex w-full md:w-[90%] h-fit md:h-[100%] md:gap-0">
+                    <div className="flex_item w-full md:w-[48%]">
+                      <h3 className="dashboard_text">Total Companies</h3>
+                      <h2
+                        id="total_company"
+                        className="text-[1.5rem] md:text-[2rem]"
+                      >
+                        {stats.totalCompanies}
+                      </h2>
+                    </div>
+                    <div className="flex_item w-full md:w-[48%]">
+                      <h3 className="dashboard_text">Average Package</h3>
+                      <h2
+                        id="avg_salary"
+                        className="text-[1.5rem] md:text-[2rem]"
+                      >
+                        {stats.averagePackage} LPA
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex_item2 flex flex-col gap-3 md:gap-0 w-full md:w-[45%] h-fit md:h-[100%] mt-[12px] md:mt-0">
+                  <h3 className="dashboard_text">Job Profiles</h3>
+                  {placedData.slice(0, 3).map((item, index) => {
+                    const { name, package: packageAmount, companyName } = item;
+                    console.log(item);
                     return (
-                      <div key={index} className="highest_package draw meet" onClick={() => { navigate(`/students/${UID}`) }}>
-                        <h3 className="highest_packagetext1">{Name.split(" ")[0] + " " + Name.split(" ")[Name.split(" ").length - 1]}<span className="highest_packagetext2">{Company}</span></h3>
-                        <h3 className="highest_packagetext2 highest_packagetext3">{Package} LPA</h3>
+                      <div
+                        key={index}
+                        className="highest_package draw meet gap-2"
+                        onClick={() => {
+                          navigate(`/students/${name}`);
+                        }}
+                      >
+                        <h3 className="highest_packagetext1 pb-3 text-[#f8b217]">
+                          {name.split(" ")[0] +
+                            " " +
+                            name.split(" ")[name.split(" ").length - 1]}
+                          <span className="highest_packagetext2">
+                            {companyName}
+                          </span>
+                        </h3>
+                        <h3 className="highest_packagetext2 highest_packagetext3">
+                          {packageAmount}
+                        </h3>
                       </div>
-                    )
-                  })
-                } */}
-                <div className="companies_div_dashboard">
-                  {/* {companiesList.map((company, index) => {
+                    );
+                  })}
+
+                  {/* <div className="companies_div_dashboard">
+                  {companiesList.map((company, index) => {
                     return (
                       <>
                         <div className="companies_inner" key={index} onClick={(e) => { handleClick(company.name) }}>
-                          <img src={company.icon} className="company_img_dash" />
+                          <img alt="" src={company.icon} className="company_img_dash" />
                           <p className="company_name">{company.name}</p>
                         </div>
                       </>
                     )
                   })
 
-                  } */}
-
-                  {/* {jdData
+                  }
+                  {placedData
                     .filter((word) => word.length <= 20)
                     .map((item, index) => {
                       return (
@@ -316,112 +340,121 @@ function Dashboard({ data }) {
                           </div>
                         </>
                       );
-                    })} */}
+                    })}
+                </div> */}
                 </div>
               </div>
-            </div>
-            <div className="flex_container2 flex flex-wrap gap-4 md:gap-0 pt-2">
-              <div className="flex_item3 w-full md:w-[50%] h-fit md:h-[100%] ">
-                <h3 className="dashboard_text">Top 5 Packages</h3>
-                <div className="packages_div">
-                  {
-                    // data.slice(0, 5).map((item, index) => {
-                    placedData.slice(0, 5)?.map((item, index) => {
-                      const { name, package: packageAmount, companyName, image, year} =  item;
-                      // console.log(item);
-                      // const profileImg = ProfileLink.slice(33,);
+              <div className="flex_container2 flex flex-wrap gap-4 md:gap-0 pt-2">
+                <div className="flex_item3 w-full md:w-[50%] h-fit md:h-[100%] ">
+                  <h3 className="dashboard_text">Top 5 Packages</h3>
+                  <div className="packages_div">
+                    {
+                      // data.slice(0, 5).map((item, index) => {
+                      placedData.slice(0, 5)?.map((item, index) => {
+                        const {
+                          name,
+                          package: packageAmount,
+                          companyName,
+                          image,
+                          year,
+                        } = item;
+                        // console.log(item);
+                        // const profileImg = ProfileLink.slice(33,);
 
-                      return (
-                        <div
-                          key={index}
-                          className="highest_package"
-                          onClick={() => {
-                            navigate(`/students/${name}`);
-                          }}
-                        >
-                          {/* {profileImg ?
+                        return (
+                          <div
+                            key={index}
+                            className="highest_package"
+                            onClick={() => {
+                              navigate(`/students/${name}`);
+                            }}
+                          >
+                            {/* {profileImg ?
                             <img src={`https://drive.google.com/thumbnail?id=${ProfileLink.slice(33,)}`}
                               className="card_img_dashboard spin circle" alt='Not Found' />
                             : <img src={dummy} alt="pic" className="card_img_dashboard spin circle" />} */}
 
-                          <img
-                            src={image}
-                            className="card_img_dashboard spin circle"
-                            alt="Not Found"
-                          />
-                          <h3 className="highest_packagetext1">
-                            <span className="text-animation py-4">
-                              {name.split(" ")[0] +
-                                " " +
-                                name.split(" ")[name.split(" ").length - 1]}
-                            </span>
-                            <span className="highest_packagetext2">
-                              {companyName}
-                            </span>
-                          </h3>
-                          <h3 className="highest_packagetext2 highest_packagetext3">
-                            {packageAmount} {" "}
-                            <span className="year_dashboard">{year} Batch</span>{" "}
+                            <img
+                              src={image}
+                              className="card_img_dashboard spin circle"
+                              alt="Not Found"
+                            />
+                            <h3 className="highest_packagetext1">
+                              <span className="text-animation py-4">
+                                {name.split(" ")[0] +
+                                  " " +
+                                  name.split(" ")[name.split(" ").length - 1]}
+                              </span>
+                              <span className="highest_packagetext2">
+                                {companyName}
+                              </span>
+                            </h3>
+                            <h3 className="highest_packagetext2 highest_packagetext3">
+                              {packageAmount}{" "}
+                              <span className="year_dashboard">
+                                {year} Batch
+                              </span>{" "}
                             </h3>
                             {/* <span className="year_dashboard">{year} Batch</span>{" "} */}
-                        </div>
-                      );
-                    })
-                  }
+                          </div>
+                        );
+                      })
+                    }
+                  </div>
                 </div>
-              </div>
-              <div className="flex_item4 w-full md:w-[47%] h-fit md:h-[100%] ">
-                <h5 className="dashboard_text">Max Packages (LPA)</h5>
-                <BarChart
-                  width={550}
-                  height={300}
-                  data={graphData}
-                  margin={{
-                    top: 20,
-                    right: 20,
-                    left: 20,
-                    bottom: 30,
-                  }}
-                >
-                  <Tooltip content={<CustomTooltip />} />
-                  <XAxis
-                    dataKey="name"
-                    label={{
-                      offset: 15,
-                      value: "Academic Years",
-                      position: "bottom",
-                      fill: "#ffffff",
+                <div className="flex_item4 w-full md:w-[47%] h-fit md:h-[100%] ">
+                  <h5 className="dashboard_text">Max Packages (LPA)</h5>
+                  <BarChart
+                    width={550}
+                    height={300}
+                    data={graphData}
+                    margin={{
+                      top: 20,
+                      right: 20,
+                      left: 20,
+                      bottom: 30,
                     }}
-                    stroke="white"
-                  />
-                  <YAxis
-                    stroke="white"
-                    label={{
-                      value: "Salary (LPA)",
-                      angle: -90,
-                      position: "insideCenter",
-                      fill: "#ffffff",
-                      dx: -25,
-                    }}
-                  />
-                  <Bar
-                    dataKey="value"
-                    fill="#4971FC"
-                    barSize={60}
-                    label={renderCustomBarLabel}
-                  />
-                </BarChart>
+                  >
+                    <Tooltip content={<CustomTooltip />} />
+                    <XAxis
+                      dataKey="name"
+                      label={{
+                        offset: 15,
+                        value: "Academic Years",
+                        position: "bottom",
+                        fill: "#ffffff",
+                      }}
+                      stroke="white"
+                    />
+                    <YAxis
+                      stroke="white"
+                      label={{
+                        value: "Salary (LPA)",
+                        angle: -90,
+                        position: "insideCenter",
+                        fill: "#ffffff",
+                        dx: -25,
+                      }}
+                    />
+                    <Bar
+                      dataKey="value"
+                      fill="#4971FC"
+                      barSize={60}
+                      label={renderCustomBarLabel}
+                    />
+                  </BarChart>
+                </div>
+                <div className="div_for_padding"> amsn</div>
               </div>
-              <div className="div_for_padding"> amsn</div>
             </div>
-          </div>
-        ) : (
-          <div className="loading_div">
-            <InternshipLoader />
-          </div>
-        )}
+          ) : (
+            <div className="loading_div">
+              <InternshipLoader />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

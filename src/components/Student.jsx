@@ -190,6 +190,7 @@
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "./Navbar";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -306,7 +307,10 @@ function StudentCards() {
   };
 
   return (
-    <div className="student-cards p-4 bg-slate-800">
+    <div className="student-cards  bg-slate-800">
+      <div className=''>
+         <Navbar ShowBtn={true}/>
+       </div>
       <h2 className="text-4xl font-bold mb-8 text-center border-b-4 border-white w-fit m-auto pt-6 text-white">
         Placed Students
       </h2>
@@ -421,8 +425,8 @@ function StudentCards() {
       )}
 
       {editStudent && (
-        <div className="edit-modal fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="edit-modal pt-20 fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 overflow-y-scroll w-[30%] h-[85%] rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold mb-4">Edit Student</h3>
             <label className="block mb-2">Name</label>
             <input

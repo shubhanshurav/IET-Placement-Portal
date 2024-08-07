@@ -13,11 +13,6 @@
   left: 0;
   z-index: 7;
 }
-.sidebar_name {
-  width: 100%;
-  height: 25%;
-  border-bottom: 2px solid #f8b117;
-}
 .sidebar_college_name {
   display: flex;
   justify-content: center;
@@ -25,7 +20,7 @@
   height: 100%;
   width: 100%;
   flex-direction: column;
-  color: #bfc4c4;
+  /* color: #bfc4c4; */
   text-align: center;
 }
 .sidebar_college_name>span{

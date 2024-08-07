@@ -55,8 +55,8 @@ const Home = () => {
     <>
     {<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5164424016159245"
      crossorigin="anonymous"></script>}
+      <Navbar ShowBtn={true}/>
       <div className="w-screen h-full flex justify-center items-center flex-col pb-20 bg-[#000000] ">
-        <Navbar />
         <div className="flex justify-evenly w-[92%] h-full flex-col items-center">
 
           {/* <h2 className='placement_name'>Placement Portal</h2> */}

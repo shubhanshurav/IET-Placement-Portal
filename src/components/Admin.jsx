@@ -319,7 +319,7 @@ const Admin = () => {
                 onChange={handelChange2}
                 value={curr_package.value1}
                 name="value1"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -332,7 +332,7 @@ const Admin = () => {
                 onChange={handelChange2}
                 value={curr_package.value2}
                 name="value2"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -346,7 +346,7 @@ const Admin = () => {
                 onChange={handelChange2}
                 value={curr_package.value3}
                 name="value3"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -360,7 +360,7 @@ const Admin = () => {
                 onChange={handelChange2}
                 value={curr_package.value4}
                 name="value4"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -374,7 +374,7 @@ const Admin = () => {
                 onChange={handelChange2}
                 value={curr_package.value5}
                 name="value5"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -383,7 +383,7 @@ const Admin = () => {
               <button
                 onClick={updateData2}
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Save Data
               </button>
@@ -404,7 +404,7 @@ const Admin = () => {
                 onChange={handelChange3}
                 value={curr_percentage.value1}
                 name="value1"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -417,7 +417,7 @@ const Admin = () => {
                 onChange={handelChange3}
                 value={curr_percentage.value2}
                 name="value2"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -431,7 +431,7 @@ const Admin = () => {
                 onChange={handelChange3}
                 value={curr_percentage.value3}
                 name="value3"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -445,7 +445,7 @@ const Admin = () => {
                 onChange={handelChange3}
                 value={curr_percentage.value4}
                 name="value4"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -459,7 +459,7 @@ const Admin = () => {
                 onChange={handelChange3}
                 value={curr_percentage.value5}
                 name="value5"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -468,7 +468,7 @@ const Admin = () => {
               <button
                 onClick={updateData3}
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Save Data
               </button>
@@ -489,7 +489,7 @@ const Admin = () => {
                 onChange={handelChange4}
                 value={curr_companies.value1}
                 name="value1"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -502,7 +502,7 @@ const Admin = () => {
                 onChange={handelChange4}
                 value={curr_companies.value2}
                 name="value2"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -516,7 +516,7 @@ const Admin = () => {
                 onChange={handelChange4}
                 value={curr_companies.value3}
                 name="value3"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -530,7 +530,7 @@ const Admin = () => {
                 onChange={handelChange4}
                 value={curr_companies.value4}
                 name="value4"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -544,7 +544,7 @@ const Admin = () => {
                 onChange={handelChange4}
                 value={curr_companies.value5}
                 name="value5"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -553,7 +553,7 @@ const Admin = () => {
               <button
                 onClick={updateData4}
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Save Data
               </button>
@@ -573,7 +573,7 @@ const Admin = () => {
                 onChange={handelChange5}
                 value={curr_median.value1}
                 name="value1"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -586,7 +586,7 @@ const Admin = () => {
                 onChange={handelChange5}
                 value={curr_median.value2}
                 name="value2"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -600,7 +600,7 @@ const Admin = () => {
                 onChange={handelChange5}
                 value={curr_median.value3}
                 name="value3"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -614,7 +614,7 @@ const Admin = () => {
                 onChange={handelChange5}
                 value={curr_median.value4}
                 name="value4"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -628,7 +628,7 @@ const Admin = () => {
                 onChange={handelChange5}
                 value={curr_median.value5}
                 name="value5"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -637,7 +637,7 @@ const Admin = () => {
               <button
                 onClick={updateData5}
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Save Data
               </button>
@@ -659,7 +659,7 @@ const Admin = () => {
                 value={statData.totalStudents}
                 name="totalStudents"
                 id="first_name"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -671,7 +671,7 @@ const Admin = () => {
                 value={statData.totalCompanies}
                 name="totalCompanies"
                 id="first_name"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -684,7 +684,7 @@ const Admin = () => {
                 value={statData.placedStudents}
                 name="placedStudents"
                 id="first_name"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -697,7 +697,7 @@ const Admin = () => {
                 value={statData.averagePackage}
                 name="averagePackage"
                 id="first_name"
-                class="inp_field border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="inp_field cursor-pointer border border-gray-300 w-25 text-white text-sm rounded-full focus:ring-blue-500 outline-none focus:border-blue-500 block p-2 ps-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -706,7 +706,7 @@ const Admin = () => {
               <button
                 onClick={updateData1}
                 type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Save Data
               </button>
