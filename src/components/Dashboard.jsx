@@ -196,7 +196,7 @@ function Dashboard({ data }) {
 
         {isSidebarVisible && <Sidebar param={"dashboard"}/>}
 
-        <div className="student_div_center w-[90%] m-auto">
+        <div className="h-[100%] w-[90%] m-auto">
           {data?.length > 0 ? (
             <div className="dashboard_bottom_dashboard flex flex-col m-auto justify-between items-center">
               <div className="dashboard_heading m-auto">

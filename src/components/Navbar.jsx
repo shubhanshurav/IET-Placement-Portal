@@ -18,9 +18,9 @@ const Navbar = ({ShowBtn}) => {
   };
   
   return (
-    <div className="pr-40 pl-4 z-10 bg-[#000000] top-0 sticky py-2">
-      <div className="flex md:flex-col flex-row justify-between content-center items-center bg-transparent w-[100%] h-[100%]">
-        <div className="">
+    <div className="z-10 bg-[#000000] top-0 sticky py-2 px-4">
+      <div className="flex md:flex-col flex-row justify-between content-center items-center bg-transparent">
+        <div className="hidden md:flex md:w-[55%] w-[25%]">
           <Link to={"https://dbrau.ac.in"} target="_blank">
             <img
               className="w-[90px] p-2 md:p-0 h-fit"
@@ -30,9 +30,9 @@ const Navbar = ({ShowBtn}) => {
           </Link>
         </div>
         {/* <p className='dyp_name'>Placement Portal</p> */}
-        <div className="md:w-[25%] w-full flex gap-[5px] md:gap-[20px] justify-end md:justify-evenly mr-[3%] md:mr-[6%] items-center">
+        <div className="md:w-[43%] w-[73%] flex gap-[5px] md:gap-[20px] justify-end md:justify-evenly items-center">
           <p
-            className=" text-white border border-4-white cursor-pointer px-3 py-[1px] text-[0.7rem] md:text-[1.4rem]"
+            className=" text-white hidden md:flex border border-4-white cursor-pointer px-3 py-[1px] text-[0.7rem] md:text-[1.4rem]"
             onClick={() => navigate("/")}
           >
             Home

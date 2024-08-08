@@ -8,18 +8,14 @@ import student from "../Assets/profile.png";
 // import logout from "../Assets/logout.png";
 import home from "../Assets/home.png";
 import logo from "../Assets/college.jpg";
+import user from "../Assets/user.png";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ param }) => {
   const navigate = useNavigate();
-  // const [isSidebarVisible, setSidebarVisibility] = useState(false);
-
-  // const toggleSidebar = () => {
-  //   setSidebarVisibility(!isSidebarVisible);
-  // };
 
   return (
-    <div className="sidebar pt-28 md:w-[18%] w-[50%] h-fit">
+    <div className="sidebar mt-[14%] md:mt-[8.5%] md:w-[18%] w-[65%] h-[100%]">
       <div className="border-[#f8b117] border-b-2 py-1">
         <p
           className="text-center"
@@ -27,12 +23,12 @@ const Sidebar = ({ param }) => {
             navigate("/dashboard");
           }}
         >
-          <img src={logo} alt="sidebar_logo" className="w-[90%] h-[90%] rounded-xl m-auto px-2" />
+          <img src={logo} alt="sidebar_logo" className="w-[90%] h-[100%] rounded-xl m-auto px-2" />
           <span className="font-bold text-[#bfc4c4] text-[1.4rem]">IET, Agra</span>
         </p>
       </div>
-      <div className="sidebar_menu py-3">
-        <ul className="sidebar_ul">
+      <div className="sidebar_menu w-[100%] h-[60%] py-3">
+        <ul className="sidebar_ul text-[20px] gap-3 font-[600]">
           <li
             className={
               param === "dashboard" ? "active sidebar_li" : "sidebar_li"
@@ -42,7 +38,7 @@ const Sidebar = ({ param }) => {
               navigate("/dashboard");
             }}
           >
-            <img src={dashboard} className="icon_img" />
+            <img src={dashboard} alt="" className="icon_img" />
             Dashboard
           </li>
           <li
@@ -54,7 +50,7 @@ const Sidebar = ({ param }) => {
               navigate("/students");
             }}
           >
-            <img src={student} className="icon_img" />
+            <img src={student} alt="" className="icon_img" />
             Students
           </li>
           <li
@@ -66,7 +62,7 @@ const Sidebar = ({ param }) => {
               navigate("/companies");
             }}
           >
-            <img src={company} className="icon_img" />
+            <img src={company} alt="" className="icon_img" />
             Companies
           </li>
           <li
@@ -78,7 +74,7 @@ const Sidebar = ({ param }) => {
               navigate("/hackathons");
             }}
           >
-            <img src={hackathon} className="icon_img" />
+            <img src={hackathon} alt="" className="icon_img" />
             Hackathons
           </li>
           <li
@@ -90,7 +86,7 @@ const Sidebar = ({ param }) => {
               navigate("/internship");
             }}
           >
-            <img src={internship} className="icon_img" />
+            <img src={internship} alt="" className="icon_img" />
             Internships
           </li>
           <li
@@ -111,6 +107,7 @@ const Sidebar = ({ param }) => {
               navigate("/gate");
             }}
           >
+            <img src={user} alt="" className="icon_img" />
             Gate Students
           </li>
         </ul>
