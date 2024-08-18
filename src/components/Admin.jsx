@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleLogout = (e) => {
     signOut(auth)
       .then(() => {
@@ -280,18 +282,74 @@ const Admin = () => {
       <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
       <div className="flex-column justify-content-center align-items-start bg-[#222222] h-full w-full">
         <nav className="relative flex flex-wrap items-center justify-between bg-[#373737] p-3">
-          <p className="text text-white font-bold text-lg pl-5">
-            Admin Dashboard
-          </p>
-          <p className="text text-white font-bold text-lg  cursor-pointer border-2 border-white p-2 rounded-md px-2" onClick={()=>{navigate('/uploadStudentsDetails');}}>Add Student</p>
-          <p className="text text-white font-bold text-lg  cursor-pointer border-2 border-white p-2 rounded-md" onClick={()=>{navigate('/uploadCertificateDetails');}}>Add Certificates</p>
-          <p className="text text-white font-bold text-lg  cursor-pointer border-2 border-white p-2 rounded-md" onClick={()=>{navigate('/uploadGateStudentDetails');}}>Add Gate Students</p>
+          <div className="flex flex-row py-2">
+            <p className="text-[#000000] border-3 border-[#f8b217] bg-[#f8b217] p-2 rounded-md font-bold text-[14px] md:text-[18px] m-auto">
+              Admin Dashboard
+            </p>
+            <div className="relative inline-block text-left m-auto px-8">
+              <div>
+                <button
+                  type="button"
+                  className="inline-flex justify-center w-full rounded-md border border-white shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  id="options-menu"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  Add Student Details
+                  <svg
+                    className="-mr-1 ml-2 h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 9.293a1 1 0 011.414 0L10 12.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {isOpen && (
+                <div
+                  className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <div className="py-1" role="none">
+                    <p
+                      className="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-300"
+                      onClick={() => navigate("/uploadStudentsDetails")}
+                    >
+                      Add Student
+                    </p>
+                    <p
+                      className="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-300"
+                      onClick={() => navigate("/uploadCertificateDetails")}
+                    >
+                      Add Certificates
+                    </p>
+                    <p
+                      className="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-300"
+                      onClick={() => navigate("/uploadGateStudentDetails")}
+                    >
+                      Add Gate Students
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
           <div>
             <Link
               to={"/dashboard"}
               class="font-bold pr-4 text-white dark:text-white-500 hover:underline"
             >
-              Go back to Home
+              Go back to Dashboard
             </Link>
             <button
               type="button"
@@ -304,7 +362,7 @@ const Admin = () => {
             </button>
           </div>
         </nav>
-        <div className="admin_container w-full">
+        <div className="admin_container flex flex-col md:flex-row w-full">
           {/* highest_package graph data */}
           <div className="statistics_div">
             <h2 className="font-bold text-center text-2xl p-3 text-[#f8b217]">

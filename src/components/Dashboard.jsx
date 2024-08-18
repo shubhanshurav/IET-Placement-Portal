@@ -188,7 +188,7 @@ function Dashboard({ data }) {
         </div>
 
         <div className="">
-           <Navbar ShowBtn={true} />
+           <Navbar ShowBtn={true}/>
         </div>
       </div>
       <div className="student_div">

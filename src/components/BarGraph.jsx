@@ -161,7 +161,7 @@ const BarGraph = () => {
         <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
             <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-5 w-[100%] justify-evenly my-5 px-3'>
 
-                <div className='chart_container p-[20px] w-[90%] md:w-[100%]' data-aos="zoom-in" data-aos-duration="600">
+                <div className='chart_container p-[20px] w-[100%]' data-aos="zoom-in" data-aos-duration="600">
                     <ResponsiveContainer>
                         <h4 className='chart_title'>Placement Percentage</h4>
 
@@ -182,7 +182,7 @@ const BarGraph = () => {
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
-                <div className='chart_container p-[20px] w-[90%] md:w-[100%]' data-aos="zoom-in" data-aos-duration="600">
+                <div className='chart_container p-[20px] w-[100%]' data-aos="zoom-in" data-aos-duration="600">
                     <ResponsiveContainer>
 
                         <h4 className='chart_title'>No. of Companies visited</h4>
@@ -207,7 +207,7 @@ const BarGraph = () => {
             {/* </div>
             <div className='flex flex-row items-center w-[100%] justify-evenly mb-5'> */}
 
-                <div className='chart_container p-[20px] w-[90%] md:w-[100%]' data-aos="zoom-in" data-aos-duration="600">
+                <div className='chart_container p-[20px] w-[100%]' data-aos="zoom-in" data-aos-duration="600">
                     <ResponsiveContainer>
 
                         <h4 className='chart_title'>Median Salary (LPA)</h4>
@@ -229,7 +229,7 @@ const BarGraph = () => {
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
-                <div className='chart_container p-[20px] w-[90%] md:w-[100%]' data-aos="zoom-in" data-aos-duration="600">
+                <div className='chart_container p-[20px] w-[100%]' data-aos="zoom-in" data-aos-duration="600">
                     <ResponsiveContainer>
 
                         <h4 className='chart_title'>Maximum Salary (LPA)</h4>

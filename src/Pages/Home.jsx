@@ -47,17 +47,17 @@ const Home = () => {
 
   });
 
-  const navigate = useNavigate();
-  const handleRedirectDashboard = () => {
-    navigate('/dashboard');
-  }
+  // const navigate = useNavigate();
+  // const handleRedirectDashboard = () => {
+  //   navigate('/dashboard');
+  // }
   return (
     <>
     {<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5164424016159245"
      crossorigin="anonymous"></script>}
       <Navbar ShowBtn={true}/>
-      <div className="w-screen h-full flex justify-center items-center flex-col pb-20 bg-[#000000] ">
-        <div className="flex justify-evenly w-[92%] h-full flex-col items-center">
+      <div className="w-screen h-full flex justify-center items-center flex-col pb-[2rem] bg-[#000000] ">
+        <div className="flex justify-evenly w-[98%] h-full flex-col items-center">
 
           {/* <h2 className='placement_name'>Placement Portal</h2> */}
           {/* <Slider/> */}
@@ -68,10 +68,10 @@ const Home = () => {
           </div>
 
           <div className='w-[90%] m-auto h-full rounded-[15px] pt-3'>
-            <img src={college_img} className='w-[100%] h-[38vh] md:h-full rounded-[10px]' alt="collegeIMG"/>
+            <img src={college_img} className='md:w-[100%] h-[23vh] md:h-full rounded-[10px]' alt="collegeIMG"/>
           </div>
 
-          {/* <button className='nav_btn_home' onClick={handleRedirectDashboard}  >Explore <img className='rocket' src={rocket} /> </button> */}
+          {/* <button className='nav_btn_home mt-3 m-auto' onClick={handleRedirectDashboard} >Explore <img className='rocket' src={rocket} /> </button> */}
         </div>
       </div>
       <div className='home_container_center1'>

@@ -18,17 +18,17 @@ const Navbar = ({ShowBtn}) => {
   };
   
   return (
-    <div className="z-10 bg-[#000000] top-0 sticky py-2 px-4">
+    <div className="z-10 bg-[#000000] top-0 sticky py-2 px-0 md:px-4">
       <div className="flex md:flex-col flex-row justify-between content-center items-center bg-transparent">
-        <div className="hidden md:flex md:w-[55%] w-[25%]">
-          <Link to={"https://dbrau.ac.in"} target="_blank">
-            <img
-              className="w-[90px] p-2 md:p-0 h-fit"
-              src={logo}
-              alt="Logo"
-            />
-          </Link>
-        </div>
+          <div className="flex md:w-[55%] w-[25%]">
+            <Link to={"https://dbrau.ac.in"} target="_blank">
+              <img
+                className="w-[90px] p-2 md:p-0 h-fit"
+                src={logo}
+                alt="Logo"
+              />
+            </Link>
+          </div>
         {/* <p className='dyp_name'>Placement Portal</p> */}
         <div className="md:w-[43%] w-[73%] flex gap-[5px] md:gap-[20px] justify-end md:justify-evenly items-center">
           <p
